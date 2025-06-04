@@ -1,0 +1,23 @@
+/* Skills.css */
+.skill-section {
+  margin-bottom: 20px;
+}
+
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  text-align: center;
+}
+
+.skill-item img {
+  width: 40px;
+  height: 40px;
+}

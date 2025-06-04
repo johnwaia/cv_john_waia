@@ -143,46 +143,12 @@
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
 }
 
-.experiences ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.experiences > ul > li {
-  margin-bottom: 2rem;
-  border-left: 3px solid #007acc;
-  padding-left: 1rem;
-}
-
-.experiences h3 {
-  margin: 0 0 0.3rem;
-  color: #007acc;
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.experiences time {
-  font-style: italic;
-  color: #555;
-  font-size: 0.9rem;
-}
-
-.experiences .details {
-  margin-top: 0.5rem;
-  padding-left: 1.2rem;
-  list-style: disc;
-  color: #333;
-  font-size: 0.95rem;
-}
-
-.experiences .details li {
-  margin-bottom: 0.3rem;
-}
 
 .formation-tabs-container {
   font-family: Arial, sans-serif;
   max-width: 900px;
   margin: auto;
 }
+
 
 
