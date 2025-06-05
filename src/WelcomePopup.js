@@ -35,7 +35,7 @@ function WelcomePopup({ onClose }) {
           }}
         />
         <p style={{ fontSize: '1rem', lineHeight: '1.4' }}>
-          Merci de visiter mon CV en ligne. Explorez mes compétences, expériences, et projets.
+          Merci de visiter mon CV en ligne. Explorez mes compétences, expériences et projets.
         </p>
         <button
           onClick={onClose}
