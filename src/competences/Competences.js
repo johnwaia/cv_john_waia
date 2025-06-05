@@ -45,6 +45,7 @@ export default function Skills() {
         { icon: 'nodejs/nodejs-original.svg', url: 'https://nodejs.org/' },
         { icon: 'angularjs/angularjs-original.svg', url: 'https://angular.io/' },
         { icon: 'flutter/flutter-original.svg', url: 'https://flutter.dev/' },
+        {icon: 'react/react-original.svg', url: 'https://reactjs.org/' },
         { icon: 'spring/spring-original.svg', url: 'https://spring.io/projects/spring-boot' },
       ]} />
 
@@ -53,8 +54,10 @@ export default function Skills() {
         { icon: 'git/git-original.svg', url: 'https://git-scm.com/' },
         { icon: 'eclipse/eclipse-original.svg', url: 'https://www.eclipse.org/' },
         { icon: 'vscode/vscode-original.svg', url: 'https://code.visualstudio.com/' },
+        { icon: 'pycharm/pycharm-original.svg', url: 'https://www.jetbrains.com/pycharm/' },
         { icon: 'androidstudio/androidstudio-original.svg', url: 'https://developer.android.com/studio' },
-      ]} />
+        {icon: 'postman/postman-original.svg', url: 'https://www.postman.com/' },
+     ]} />
     </div>
   );
 }

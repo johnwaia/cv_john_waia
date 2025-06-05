@@ -29,6 +29,7 @@ function WelcomePopup({ onClose }) {
           style={{ 
             width: '100%', 
             maxWidth: '300px', 
+            borderRadius: '2rem',
             height: 'auto', 
             margin: '1rem auto',
             display: 'block',
