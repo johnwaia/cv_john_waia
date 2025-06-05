@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
-import FormationTabs from "./formation";
-import Experiences from './experiences';
-import Competences from './Competences'; 
-import Projets from './project';
+import FormationTabs from "./formations/formation";
+import Experiences from './experiences/experiences';
+import Competences from './competences/Competences'; 
+import Projets from './projet/project';
 import WelcomePopup from './WelcomePopup';
-
+import SoftSkills from './softSkill/softskills'; 
+import Interests from './centreInteret/centreInteret';
+import { softSkillsList } from './softSkill/softskillList';
 
 const tabs = [
   'Description',
@@ -18,17 +20,7 @@ const tabs = [
   'Projets',
 ];
 
-const softSkillsList = [
-  { label: "Communication", icon: "🗣️" },
-  { label: "Travail en équipe", icon: "🤝" },
-  { label: "Adaptabilité", icon: "🔄" },
-  { label: "Résolution de problèmes", icon: "🧩" },
-  { label: "Gestion du temps", icon: "⏰" },
-  { label: "Créativité", icon: "🎨" },
-  { label: "Empathie", icon: "❤️" },
-  { label: "Pensée critique", icon: "🧠" },
-  { label: "Flexibilité", icon: "🌀" },
-];
+
 
 const tabTooltips = {
   Formations: "Mon parcours académique",
@@ -45,7 +37,6 @@ function App() {
   const [activeTab, setActiveTab] = useState('Description');
   const [showWelcome, setShowWelcome] = useState(true);
 
-  const closeWelcome = () => setShowWelcome(false);
   const TabContent = () => {
     switch (activeTab) {
       case 'Description':
@@ -96,24 +87,10 @@ function App() {
         return <Experiences />;
 
       case 'Centres d’intérêt':
-        return (
-          <ul>
-            <li>Boxe anglaise 🥊</li>
-            <li>Informatique (hardware & web dev)</li>
-          </ul>
-        );
-      
+          return <Interests />;
+
       case 'Soft Skills':
-      return (
-        <ul className="soft-skills-list">
-          {softSkillsList.map(({ label, icon }) => (
-            <li key={label} className="soft-skill-item">
-              <span className="soft-skill-icon">{icon}</span>
-              <span className="soft-skill-label">{label}</span>
-            </li>
-          ))}
-        </ul>
-      );
+      return <SoftSkills softSkillsList={softSkillsList} />;
 
       case 'Langues':
         return (
