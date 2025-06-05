@@ -53,7 +53,6 @@ function FormationTabs() {
 
   return (
     <div style={{ maxWidth: 700, margin: "auto", fontFamily: "Arial, sans-serif" }}>
-      {/* Navbar horizontale */}
       <nav
         role="tablist"
         aria-label="Formations"
@@ -91,8 +90,7 @@ function FormationTabs() {
           </button>
         ))}
       </nav>
-
-      {/* Contenu de la formation sélectionnée */}
+      
       <section
         id={`formation-panel-${activeIndex}`}
         role="tabpanel"

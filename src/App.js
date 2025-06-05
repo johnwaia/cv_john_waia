@@ -30,6 +30,16 @@ const softSkillsList = [
   { label: "Flexibilité", icon: "🌀" },
 ];
 
+const tabTooltips = {
+  Formations: "Mon parcours académique",
+  Projets: "Consultez mes projets",
+  Compétences: "Voir mes compétences techniques",
+  Description: "Apprenez-en plus sur moi",
+  'Expériences': "Découvrez mon parcours professionnel",
+  'Centres d’intérêt': "Mes passions et loisirs",
+  'Soft Skills': "Mes compétences interpersonnelles",
+  'Langues': "Mes compétences linguistiques",
+};
 
 function App() {
   const [activeTab, setActiveTab] = useState('Description');
@@ -133,13 +143,17 @@ function App() {
         </div>
         <nav className="nav-links">
           {tabs.map((tab) => (
-            <button
-              key={tab}
-              className={`nav-button ${activeTab === tab ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
+             <button
+                key={tab}
+                className={`btn btn-secondary nav-button ${activeTab === tab ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab)}
+                data-bs-toggle="tooltip"
+                data-bs-html="true"
+                title={tabTooltips[tab] || `Onglet ${tab}`}
+              >
+                {tab}
             </button>
+
           ))}
         </nav>
       </header>
