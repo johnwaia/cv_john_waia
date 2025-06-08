@@ -232,9 +232,6 @@ const Projets = () => {
                 </div>
             );
 
-
-
-
         case 'personnels':
             return (
             <div style={{ padding: '1rem', fontFamily: 'Arial, sans-serif' }}>
@@ -279,13 +276,88 @@ const Projets = () => {
 
                 {selectedTab === 'Aperçu' && (
                     <>
-                    <h4>📸 Aperçu de l’application</h4>
-                    <ul>
-                        <li>Page d'accueil</li>
-                        <li>Détails des cours</li>
-                        <li>Détail événement</li>
-                        <li>Organisation de réunion</li>
-                        <li>Créneaux communs</li>
+                    <h4 style={{ marginBottom: '1rem' }}>📸 Aperçu de l’application</h4>
+                    <ul style={{ listStyleType: 'none', padding: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                        <li>
+                        <strong>Page d'accueil</strong>
+                        <br />
+                        <img
+                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/page_acceuil.jpg"
+                            alt="Page d'accueil"
+                            style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            height: 'auto',
+                            marginTop: '0.5rem',
+                            borderRadius: '8px',
+                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
+                            }}
+                        />
+                        </li>
+                        <li>
+                        <strong>Affichage Emploi du temps</strong>
+                        <br />
+                        <img
+                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/affichage_cours.jpg"
+                            alt="Affichage Emploi du temps"
+                            style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            height: 'auto',
+                            marginTop: '0.5rem',
+                            borderRadius: '8px',
+                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
+                            }}
+                        />
+                        </li>
+                        <li>
+                        <strong>Détail Cours</strong>
+                        <br />
+                        <img
+                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/d%C3%A9tails_cours.jpg"
+                            alt="Détail Cours"
+                            style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            height: 'auto',
+                            marginTop: '0.5rem',
+                            borderRadius: '8px',
+                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
+                            }}
+                        />
+                        </li>
+                        <li>
+                        <strong>Organisation de réunion</strong>
+                        <br />
+                        <img
+                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/organiser_des_r%C3%A9unions.jpg"
+                            alt="Organisation de réunion"
+                            style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            height: 'auto',
+                            marginTop: '0.5rem',
+                            borderRadius: '8px',
+                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
+                            }}
+                        />
+                        </li>
+                        <li>
+                        <strong>Créneaux communs</strong>
+                        <br />
+                        <img
+                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/Affichage_des_cr%C3%A9neaux.jpg"
+                            alt="Créneaux communs"
+                            style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            height: 'auto',
+                            marginTop: '0.5rem',
+                            borderRadius: '8px',
+                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
+                            }}
+                        />
+                        </li>
                     </ul>
                     </>
                 )}
@@ -377,7 +449,66 @@ const Projets = () => {
             </div>
             );
 
-      default:
+        case 'autre':
+        return (
+            <div style={{ padding: '1rem', fontFamily: 'Arial, sans-serif' }}>
+            <section>
+                <h2 style={{ color: '#007BFF' }}>Projet Personnel : Livre IA</h2>
+                <ProjetTabs
+                tabs={['Présentation', 'Caractéristiques', 'Téléchargement']}
+                renderContent={(selectedTab) => {
+                    switch (selectedTab) {
+                    case 'Présentation':
+                        return (
+                            <>
+                            <p>
+                                J'ai créé ce livre pour enfants avec l'aide de l'intelligence artificielle. Il raconte une histoire amusante et originale,
+                                conçue pour stimuler l'imagination des plus jeunes tout en montrant comment l'IA peut participer à la création de contenu.
+                            </p>
+                            </>
+                        );
+
+
+
+                    case 'Caractéristiques':
+                        return (
+                        <ul>
+                            <li>Contenu généré par IA (ChatGPT & IA Canvas)</li>
+                            <li>Thème : Histoire pour enfant</li>
+                            <li>Format : PDF</li>
+                            <li>Langue : Français</li>
+                            <li>Nombre de pages : 10 (Sans compter la couverture et la page de fin)</li>
+                        </ul>
+                        );
+
+                        case 'Téléchargement':
+                        return (
+                            <>
+                            <p>
+                                Vous pouvez télécharger le livre gratuitement en cliquant sur le lien ci-dessous :
+                                <br />
+                                <a
+                                href="https://drive.google.com/file/d/1_0xzjVbjMKRthZOXzbh4lM9HSEogSHtW/view?usp=sharing"
+                                download
+                                style={{ color: '#28a745', textDecoration: 'underline', marginTop: '1rem', display: 'inline-block' }}
+                                >
+                                📘 Télécharger le livre (PDF)
+                                </a>
+                            </p>
+                            </>
+                        );
+
+
+                    default:
+                        return null;
+                    }
+                }}
+                />
+            </section>
+            </div>
+        );
+
+        default:
         return null;
     }
   };
@@ -407,7 +538,19 @@ const Projets = () => {
             borderRadius: '4px'
           }}
         >
-          Personnels
+          personnels
+        </button>
+        <button
+          onClick={() => setOngletActif('autre')}
+          style={{
+            padding: '0.5rem 1rem',
+            backgroundColor: ongletActif === 'autre' ? '#007BFF' : '#ccc',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px'
+          }}
+        >
+          autre
         </button>
       </div>
 
