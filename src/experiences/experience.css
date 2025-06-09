@@ -117,3 +117,31 @@
 .card-back .details li {
   margin-bottom: 0.5rem;
 }
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center;     /* Centre verticalement si besoin */
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  background: #eee;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.tab-button:hover {
+  background: #ddd;
+}
+
+.tab-button.active {
+  background: #007bff;
+  color: white;
+}

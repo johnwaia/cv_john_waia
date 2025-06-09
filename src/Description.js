@@ -1,10 +1,8 @@
-// Description.js
 import React from 'react';
 
 const Description = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-      {/* Conteneur logo + texte côte à côte */}
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Logo_Efrei_2022.svg/1200px-Logo_Efrei_2022.svg.png"
@@ -19,7 +17,6 @@ const Description = () => {
             Début : 01/09/2025 • Durée : 24 mois<br />
             Objectif : Mastère Dev Manager Full Stack – Efrei Paris
           </p>
-
           <blockquote
             style={{
               marginTop: '0.5rem',
@@ -34,7 +31,6 @@ const Description = () => {
         </div>
       </div>
 
-      {/* GIF en haut centré */}
       <img
         src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHlhNmJxeG9iZXU4bXRudG9wNG5mb21jeWN0ZWlwcDQ5NXd4aWZtNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9IZQO6hTyaXCb589O4/100.webp"
         alt="Fun animation"

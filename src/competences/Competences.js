@@ -47,7 +47,6 @@ export default function Skills() {
         { icon: 'flutter/flutter-original.svg', url: 'https://flutter.dev/' },
         {icon: 'react/react-original.svg', url: 'https://reactjs.org/' },
         { icon: 'spring/spring-original.svg', url: 'https://spring.io/projects/spring-boot' },
-        { icon: 'https://www.sfeir.dev/content/images/2024/09/Vaadin-Logo.wine.svg', url: 'https://vaadin.com/' }
       ]} />
 
       <Section title="Outils" items={[

@@ -1,12 +1,14 @@
 // Experiences.js
-import React from 'react';
+
 import './experience.css'; // optionnel si tu veux un style spécifique
+import React, { useState } from 'react';
 
 const experiencesData = [
   {
     title: "Stage Développement Web – ISI NC",
     start: "2024-11-04",
     end: "2025-01-17",
+    category: "Informatique",
     details: [
       "Conception et développement de fonctionnalités web",
       "Création d’interfaces utilisateur responsives",
@@ -18,6 +20,7 @@ const experiencesData = [
     title: "Employé fruits/légumes – Géant Sainte-Marie",
     start: "2024-07-24",
     end: "présent",
+    category: "Grande Distribution",
     details: [
       "Gestion des stocks et approvisionnement",
       "Accueil client et entretien du rayon",
@@ -29,6 +32,7 @@ const experiencesData = [
     title: "Livreur de pizza – Boite à Pizza",
     start: "2024-03-15",
     end: "2024-05-13",
+    category: "Restauration",
     details: [
       "Livraison rapide à une clientèle variée",
       "Respect des délais et encaissement précis",
@@ -40,6 +44,7 @@ const experiencesData = [
     title: "Ambassadeur Environnement – Parc de Dumbéa",
     start: "2023-12",
     end: "2024-02",
+    category: "Animation",
     details: [
       "Sensibilisation écologique et projets durables",
       "Mise en place de projets écologiques.",
@@ -51,6 +56,7 @@ const experiencesData = [
     title: "Commis de cuisine – Brioche Dorée",
     start: "2022-12-05",
     end: "2023-01-29",
+    category: "Restauration",
     details: [
       "Dresser des plats et les transmettre au personnel de salle.",
       "Participer à l'entretien du poste de la cuisine et des locaux annexes.",
@@ -62,6 +68,7 @@ const experiencesData = [
     title: "Technicien Informatique – BBS",
     start: "2022-01-03",
     end: "2022-01-31",
+    category: "Informatique",
     details: [
       "Installation/maintenance systèmes",
       "Support technique & sécurité informatique",
@@ -73,6 +80,7 @@ const experiencesData = [
     title: "Employé libre-service cave – Auchan Trianon",
     start: "2021-12-10",
     end: "2021-12-31",
+    category: "Grande Distribution",
     details: [
       "Réception de stocks, conseil client, gestion caisse",
       "Conseil à la clientèle ",
@@ -85,6 +93,7 @@ const experiencesData = [
     title: "Animateur centre de loisirs – Village de Magenta",
     start: "2017-12-10",
     end: "2018-02-16",
+    category: "Animation",
     details: [
       "Planification d’activités.", 
       "Encadrement enfants.",
@@ -94,47 +103,52 @@ const experiencesData = [
   },
 ];
 
+const categories = [ "Restauration", "Animation", "Grande Distribution", "Informatique"];
+
 export default function Experiences() {
+  const [activeCategory, setActiveCategory] = useState("Tous");
+
+  const filteredData =
+    activeCategory === "Tous"
+      ? experiencesData
+      : experiencesData.filter(exp => exp.category === activeCategory);
+
   return (
     <div className="experiences">
+      <div className="tabs">
+        {categories.map(cat => (
+          <button
+            key={cat}
+            onClick={() => setActiveCategory(cat)}
+            className={`tab-button ${activeCategory === cat ? 'active' : ''}`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       <ul className="experience-list">
-        {experiencesData.map(({ title, start, end, details, logo }, index) => (
+        {filteredData.map(({ title, start, end, details, logo }, index) => (
           <li key={index} className="experience-card">
             <div className="card-inner">
               <div className="card-front">
                 {logo && (
-                  <img
-                    src={logo}
-                    alt={`Logo ${title}`}
-                    className="card-logo"
-                  />
+                  <img src={logo} alt={`Logo ${title}`} className="card-logo" />
                 )}
                 <h3>{title}</h3>
                 <time dateTime={start}>
-                  {new Date(start).toLocaleDateString('fr-FR', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                  })}
+                  {new Date(start).toLocaleDateString('fr-FR')}
                 </time>
                 {" – "}
-                {end.toLowerCase() === "présent" ? (
-                  "présent"
-                ) : (
+                {end.toLowerCase() === "présent" ? "présent" : (
                   <time dateTime={end}>
-                    {new Date(end).toLocaleDateString('fr-FR', {
-                      day: '2-digit',
-                      month: '2-digit',
-                      year: 'numeric',
-                    })}
+                    {new Date(end).toLocaleDateString('fr-FR')}
                   </time>
                 )}
               </div>
               <div className="card-back">
                 <ul className="details">
-                  {details.map((detail, i) => (
-                    <li key={i}>{detail}</li>
-                  ))}
+                  {details.map((detail, i) => <li key={i}>{detail}</li>)}
                 </ul>
               </div>
             </div>

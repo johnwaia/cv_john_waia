@@ -30,6 +30,18 @@ export default function Interests() {
         >
           Informatique 💻
         </button>
+         <button
+          onClick={() => setInterestTab('cryptomonnaie')}
+          style={{
+            padding: '6px 12px',
+            border: '1px solid #ccc',
+            background: interestTab === 'cryptomonnaie' ? '#eee' : '#fff',
+            cursor: 'pointer',
+            borderRadius: '4px',
+          }}
+        >
+          Cryptomonnaie 🪙
+        </button>
       </div>
 
       {interestTab === 'boxe' && (
@@ -79,7 +91,6 @@ export default function Interests() {
         </div>
         )}
 
-
       {interestTab === 'info' && (
   <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
     <img
@@ -123,6 +134,52 @@ export default function Interests() {
     </div>
   </div>
         )}
+
+      {interestTab === 'cryptomonnaie' && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <img
+            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXVtdHp6YjVhNTVxMW5pdHVlOG0wMmVoaGRqM2oxMjJzYmZjN2NwYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xUOxfeA0KTu1Ztj5FC/200w.webp"
+            alt="Cryptomonnaie GIF"
+            style={{
+              borderRadius: '30px',
+              maxWidth: '200px',
+              height: 'auto',
+              flexShrink: 0,
+            }}
+          />
+          <div>
+            <blockquote
+              style={{
+                fontStyle: 'italic',
+                borderLeft: '4px solid #ccc',
+                paddingLeft: '10px',
+                color: '#555',
+                marginBottom: '1rem',
+              }}
+            >
+              "La cryptomonnaie me passionne car elle redéfinit notre conception de la finance et de la confiance numérique. J’apprécie explorer les technologies blockchain, comprendre les mécanismes de consensus, et suivre l’évolution des cryptos dans un monde de plus en plus décentralisé."
+            </blockquote>
+            <div
+              style={{
+                borderTop: '1px solid #ddd',
+                paddingTop: '15px',
+                fontStyle: 'italic',
+                color: '#333',
+                maxWidth: '400px',
+                marginLeft: 'auto',
+              }}
+            >
+              <p style={{ marginBottom: '5px', fontWeight: 'bold' }}>Satoshi Nakamoto</p>
+              <p style={{ margin: 0 }}>
+                "If you don't believe it or don't get it, I don't have the time to try to convince you, sorry."
+              </p>
+              <p style={{ margin: 0, fontStyle: 'normal', color: '#666', fontSize: '0.9rem' }}>
+              (Si vous n'y croyez pas ou ne comprenez pas, je n'ai pas le temps d'essayer de vous convaincre, désolé.)
+            </p>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

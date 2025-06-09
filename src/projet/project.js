@@ -47,7 +47,7 @@ const Projets = () => {
                             return (
                             <>
                                 <h4>🛠️ Technologies utilisées</h4>
-                                <p>Les technologies sont indicatives. Vous pouvez en utiliser d’autres si elles sont pertinentes.</p>
+                                <p>Les technologies sont indicatives. Vous pouvez en utiliser d’Autress si elles sont pertinentes.</p>
                             </>
                             );
                         case 'Éclaircissements':
@@ -232,7 +232,7 @@ const Projets = () => {
                 </div>
             );
 
-        case 'personnels':
+        case 'Personnels':
             return (
             <div style={{ padding: '1rem', fontFamily: 'Arial, sans-serif' }}>
             <h2 style={{ color: '#007BFF' }}>📅 Emploi du Temps UNC</h2>
@@ -449,64 +449,84 @@ const Projets = () => {
             </div>
             );
 
-        case 'autre':
-        return (
-            <div style={{ padding: '1rem', fontFamily: 'Arial, sans-serif' }}>
-            <section>
-                <h2 style={{ color: '#007BFF' }}>Projet Personnel : Livre IA</h2>
-                <ProjetTabs
-                tabs={['Présentation', 'Caractéristiques', 'Téléchargement']}
-                renderContent={(selectedTab) => {
-                    switch (selectedTab) {
-                    case 'Présentation':
-                        return (
-                            <>
-                            <p>
-                                J'ai créé ce livre pour enfants avec l'aide de l'intelligence artificielle. Il raconte une histoire amusante et originale,
-                                conçue pour stimuler l'imagination des plus jeunes tout en montrant comment l'IA peut participer à la création de contenu.
-                            </p>
-                            </>
-                        );
+        case 'Autres':
+            return (
+                <div style={{ padding: '1rem', fontFamily: 'Arial, sans-serif' }}>
+                <section>
+                    <h2 style={{ color: '#007BFF' }}>Projet Personnel : Livre IA</h2>
+                    <ProjetTabs
+                    tabs={['Présentation', 'Caractéristiques', 'Téléchargement']}
+                    renderContent={(selectedTab) => {
+                        switch (selectedTab) {
+                            case 'Présentation':
+                                return (
+                                    <>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                                        <img
+                                            src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXppOTRvdndwbDg5YTc3ZWxuZXE2MHlwa3NkdjR4cndvN3J2dXIxciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SKGo6OYe24EBG/200w.webp"
+                                            alt="Imagination"
+                                            style={{
+                                            borderRadius: '30px',
+                                            maxWidth: '200px',
+                                            height: 'auto',
+                                            flexShrink: 0,
+                                            }}
+                                        />
+                                        <div>
+                                            <blockquote
+                                            style={{
+                                                fontStyle: 'italic',
+                                                borderLeft: '4px solid #ccc',
+                                                paddingLeft: '10px',
+                                                color: '#555',
+                                                marginBottom: '1rem',
+                                            }}
+                                            >
+                                                J'ai créé ce livre pour enfants avec l'aide de l'intelligence artificielle. Il raconte une histoire amusante et originale,
+                                                conçue pour stimuler l'imagination des plus jeunes tout en montrant comment l'IA peut participer à la création de contenu.
+                                            </blockquote>
+                                            
+                                        </div>
+                                        </div>
+                                    </>
+                                );
 
+                            case 'Caractéristiques':
+                                return (
+                                <ul>
+                                    <li>Contenu généré par IA (ChatGPT & IA Canvas)</li>
+                                    <li>Thème : Histoire pour enfant</li>
+                                    <li>Format : PDF</li>
+                                    <li>Langue : Français</li>
+                                    <li>Nombre de pages : 10 (Sans compter la couverture et la page de fin)</li>
+                                </ul>
+                                );
 
+                            case 'Téléchargement':
+                            return (
+                                <>
+                                <p>
+                                    Vous pouvez télécharger le livre gratuitement en cliquant sur le lien ci-dessous :
+                                    <br />
+                                    <a
+                                    href="https://drive.google.com/file/d/1DJoZqgmMftUsb_SO0QbZ27CM6oBFRyb0/view?usp=sharing"
+                                    download
+                                    style={{ color: '#28a745', textDecoration: 'underline', marginTop: '1rem', display: 'inline-block' }}
+                                    >
+                                    📘 Télécharger le livre (PDF)
+                                    </a>
+                                </p>
+                                </>
+                            );
 
-                    case 'Caractéristiques':
-                        return (
-                        <ul>
-                            <li>Contenu généré par IA (ChatGPT & IA Canvas)</li>
-                            <li>Thème : Histoire pour enfant</li>
-                            <li>Format : PDF</li>
-                            <li>Langue : Français</li>
-                            <li>Nombre de pages : 10 (Sans compter la couverture et la page de fin)</li>
-                        </ul>
-                        );
-
-                        case 'Téléchargement':
-                        return (
-                            <>
-                            <p>
-                                Vous pouvez télécharger le livre gratuitement en cliquant sur le lien ci-dessous :
-                                <br />
-                                <a
-                                href="https://drive.google.com/file/d/1_0xzjVbjMKRthZOXzbh4lM9HSEogSHtW/view?usp=sharing"
-                                download
-                                style={{ color: '#28a745', textDecoration: 'underline', marginTop: '1rem', display: 'inline-block' }}
-                                >
-                                📘 Télécharger le livre (PDF)
-                                </a>
-                            </p>
-                            </>
-                        );
-
-
-                    default:
-                        return null;
-                    }
-                }}
-                />
-            </section>
-            </div>
-        );
+                        default:
+                            return null;
+                        }
+                    }}
+                    />
+                </section>
+                </div>
+            );
 
         default:
         return null;
@@ -529,28 +549,28 @@ const Projets = () => {
           Pédagogiques
         </button>
         <button
-          onClick={() => setOngletActif('personnels')}
+          onClick={() => setOngletActif('Personnels')}
           style={{
             padding: '0.5rem 1rem',
-            backgroundColor: ongletActif === 'personnels' ? '#007BFF' : '#ccc',
+            backgroundColor: ongletActif === 'Personnels' ? '#007BFF' : '#ccc',
             color: 'white',
             border: 'none',
             borderRadius: '4px'
           }}
         >
-          personnels
+          Personnels
         </button>
         <button
-          onClick={() => setOngletActif('autre')}
+          onClick={() => setOngletActif('Autres')}
           style={{
             padding: '0.5rem 1rem',
-            backgroundColor: ongletActif === 'autre' ? '#007BFF' : '#ccc',
+            backgroundColor: ongletActif === 'Autres' ? '#007BFF' : '#ccc',
             color: 'white',
             border: 'none',
             borderRadius: '4px'
           }}
         >
-          autre
+          Autres
         </button>
       </div>
 
