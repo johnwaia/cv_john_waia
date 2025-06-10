@@ -38,55 +38,69 @@ const tabTooltips = {
   'Langues': "Mes compétences linguistiques",
 };
 
+
+
+
 function App() {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('Description');
   const [showWelcome, setShowWelcome] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const filteredTabs = tabs.filter(tab => 
     tab.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  const goPrevTab = () => {
+    const prevIndex = activeIndex === 0 ? tabs.length - 1 : activeIndex - 1;
+    setActiveTab(tabs[prevIndex]);
+  };
+
+  // Fonction pour aller à l'onglet suivant
+  const goNextTab = () => {
+    const nextIndex = activeIndex === tabs.length - 1 ? 0 : activeIndex + 1;
+    setActiveTab(tabs[nextIndex]);
+  };
 
   const TabContent = () => {
     switch (activeTab) {
         case 'Description':
           return <Description />;
 
-      case "Formations":
-            return (
-              <div>
-                <h1 style={{marginBottom: 30 }}>Parcours de Formation</h1>
-                <FormationTabs />
-              </div>
+        case "Formations":
+              return (
+                <div>
+                  <h1 style={{marginBottom: 30 }}>Parcours de Formation</h1>
+                  <FormationTabs />
+                </div>
+            );
+
+        case 'Compétences':
+          return <Competences />;
+
+        case 'Expériences':
+          return <Experiences />;
+
+        case 'Centres d’intérêt':
+            return <Interests />;
+
+        case 'Soft Skills':
+        return <SoftSkills softSkillsList={softSkillsList} />;
+
+        case 'Langues':
+          return (
+            <ul className="list-none p-0">
+              <li className="flex items-center mb-2">
+                <span className="text-xl mr-2">🇫🇷</span>
+                <span>Français : <span className="font-semibold">Courant</span></span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-xl mr-2">🇬🇧</span>
+                <span>Anglais : <span className="font-semibold">B1</span></span>
+              </li>
+            </ul>
           );
-
-      case 'Compétences':
-        return <Competences />;
-
-      case 'Expériences':
-        return <Experiences />;
-
-      case 'Centres d’intérêt':
-          return <Interests />;
-
-      case 'Soft Skills':
-      return <SoftSkills softSkillsList={softSkillsList} />;
-
-      case 'Langues':
-        return (
-          <ul className="list-none p-0">
-            <li className="flex items-center mb-2">
-              <span className="text-xl mr-2">🇫🇷</span>
-              <span>Français : <span className="font-semibold">Courant</span></span>
-            </li>
-            <li className="flex items-center">
-              <span className="text-xl mr-2">🇬🇧</span>
-              <span>Anglais : <span className="font-semibold">B1</span></span>
-            </li>
-          </ul>
-        );
-      
-      case 'Projets':
-          return <Projets />;
+        
+        case 'Projets':
+            return <Projets />;
 
         default:
         return null;
@@ -95,6 +109,28 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* Flèche gauche */}
+      <button 
+        onClick={() => {
+          const prevIndex = tabs.indexOf(activeTab) === 0 ? tabs.length - 1 : tabs.indexOf(activeTab) - 1;
+          setActiveTab(tabs[prevIndex]);
+        }}
+        className="nav-arrow left-arrow"
+        aria-label="Onglet précédent"
+      >
+        &#8592;
+      </button> 
+      {/* Flèche droite */}
+      <button 
+        onClick={() => {
+          const nextIndex = tabs.indexOf(activeTab) === tabs.length - 1 ? 0 : tabs.indexOf(activeTab) + 1;
+          setActiveTab(tabs[nextIndex]);
+        }}
+        className="nav-arrow right-arrow"
+        aria-label="Onglet suivant"
+      >
+        &#8594;
+      </button>
       {showWelcome && <WelcomePopup onClose={() => setShowWelcome(false)} />}
       <header className="navbar">
         <div className="photo-container">

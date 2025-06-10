@@ -90,6 +90,19 @@ const experiencesData = [
     logo: "https://www.seniors.nc/assets/images/logo/partenaires/72ca67ae24e985e6dd7f91d8ee8e334f.png",
   },
   {
+    title: "Stage BTS Bâtiment – Arbe",
+    start: "2019-11-04",
+    end: "2019-12-10",
+    category: "Construction",
+    details: [
+      "Lecture de plans et dessins techniques",
+      "Connaissances en sécurité sur chantier",
+      "Compétences techniques de base en BTP"
+
+    ],
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTJMTCZhi-LSHqxI6IZgPZhjm7PmZ94xCZSh621TKv4L8LZQIOJnEpPqvZPMgVWP3ugiU&usqp=CAU",
+  },
+  {
     title: "Animateur centre de loisirs – Village de Magenta",
     start: "2017-12-10",
     end: "2018-02-16",
@@ -103,7 +116,7 @@ const experiencesData = [
   },
 ];
 
-const categories = [ "Restauration", "Animation", "Grande Distribution", "Informatique"];
+const categories = [ "Restauration", "Animation", "Grande Distribution", "Informatique","Construction"];
 
 export default function Experiences() {
   const [activeCategory, setActiveCategory] = useState("Tous");
