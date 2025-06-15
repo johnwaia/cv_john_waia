@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://johnwaia.github.io/cv_john_waia",
   "dependencies": {
+    "@formspree/react": "^3.0.0",
     "@popperjs/core": "^2.11.8",
     "@react-three/drei": "^10.1.2",
     "@react-three/fiber": "^9.1.2",

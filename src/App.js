@@ -42,6 +42,7 @@ const tabTooltips = {
 
 
 function App() {
+   const [message, setMessage] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('Description');
   const [showWelcome, setShowWelcome] = useState(true);
@@ -109,7 +110,6 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Flèche gauche */}
       <button 
         onClick={() => {
           const prevIndex = tabs.indexOf(activeTab) === 0 ? tabs.length - 1 : tabs.indexOf(activeTab) - 1;
@@ -120,7 +120,6 @@ function App() {
       >
         &#8592;
       </button> 
-      {/* Flèche droite */}
       <button 
         onClick={() => {
           const nextIndex = tabs.indexOf(activeTab) === tabs.length - 1 ? 0 : tabs.indexOf(activeTab) + 1;
@@ -169,9 +168,6 @@ function App() {
         </nav>
       </header>
       
-        
-
-
       <main className="main-content">
         <TabContent />
       </main>

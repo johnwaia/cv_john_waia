@@ -116,8 +116,8 @@ const experiencesData = [
   },
   {
     title: "Dockaire – Auchan Quai Ferry",
-    start: "2021-12-10",
-    end: "2021-12-31",
+    start: "2025-06-12",
+    end: "2025-06-15",
     category: "Intérim (Logistique Pro Service)",
     details: [
       "Rangement du dock",
@@ -128,8 +128,8 @@ const experiencesData = [
   },
   {
     title: "Employé libre service – Leader Price Conception",
-    start: "2021-12-10",
-    end: "2021-12-31",
+    start: "2025-06-10",
+    end: "2025-06-11",
     category: "Intérim (Logistique Pro Service)",
     details: [
       "Travail en équipe dans un environnement dynamique",
