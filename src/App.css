@@ -1,4 +1,4 @@
-/* Conteneur général */
+/* === GÉNÉRAL === */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -6,13 +6,15 @@
   font-family: Arial, sans-serif;
 }
 
-/* Navbar horizontale */
+/* === NAVBAR === */
 .navbar {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   background-color: #333;
   padding: 10px 20px;
   gap: 10px;
-  justify-content: center;
 }
 
 .nav-button {
@@ -37,17 +39,24 @@
   font-weight: 900;
 }
 
-/* Contenu principal */
+.nav-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* === CONTENU PRINCIPAL === */
 .main-content {
   flex-grow: 1;
   max-width: 700px;
+  width: 100%;
   margin: 30px auto;
   padding: 0 15px;
   font-size: 1.1rem;
   line-height: 1.5;
 }
 
-/* Footer Contact */
+/* === FOOTER === */
 .footer-contact {
   background-color: #222;
   color: #eee;
@@ -65,40 +74,24 @@
   text-decoration: underline;
 }
 
-/* Photo de profil */
+/* === PHOTO DE PROFIL === */
 .profile-photo {
-  width: 100px;        /* taille réduite */
-  height: 100px;       /* taille carrée */
-  border-radius: 50%;  /* rend la photo ronde */
-  object-fit: cover;   /* ajuste l’image sans déformation */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
   border: 2px solid white;
   margin-right: 20px;
 }
 
-/* Conteneur de la photo */
 .photo-container {
   display: flex;
   align-items: center;
   margin-right: 20px;
-}
-
-/* Organisation de la navbar avec la photo et les liens */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: #333;
-  padding: 10px 20px;
-  gap: 10px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 10px;
   flex-wrap: wrap;
 }
 
+/* === SKILLS === */
 .skill-grid {
   display: flex;
   gap: 20px;
@@ -143,11 +136,13 @@
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
 }
 
-
+/* === TABS FORMATION === */
 .formation-tabs-container {
   font-family: Arial, sans-serif;
   max-width: 900px;
+  width: 100%;
   margin: auto;
+  padding: 0 15px;
 }
 
 .tab-button {
@@ -167,7 +162,7 @@
   outline: 2px solid #007bff;
 }
 
-/* Style général des flèches */
+/* === FLÈCHES NAV === */
 .nav-arrow {
   position: absolute;
   top: 50%;
@@ -198,7 +193,7 @@
 }
 
 .nav-arrow:hover {
-  background-color: #007BFF; /* bleu dynamique */
+  background-color: #007BFF;
   color: #fff;
   animation: bounce 0.6s ease;
   box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4);
@@ -212,17 +207,29 @@
     transform: translateY(calc(-50% - 10px)) scale(1.1);
   }
 }
+
+/* === CONTACT FORMULAIRE === */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-grid,
 .footer-message {
-  flex: 1;
+  flex: 1 1 300px;
+  width: 100%;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
+/* === MESSAGE DE CONTACT === */
 .footer-message h4 {
   margin-bottom: 12px;
   font-weight: 600;
@@ -288,34 +295,39 @@
   margin-top: 10px;
 }
 
-.contact-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 30px;
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.contact-grid,
-.footer-message {
-  flex: 1;
-
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
+/* === SÉPARATEUR === */
 .vertical-separator {
-  width: 2px;
+  width: 100%;
+  height: 2px;
   background-color: #ccc;
   border-radius: 1px;
-  height: auto;
-  min-height: 300px;
-  align-self: stretch; 
+  align-self: stretch;
 }
 
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .navbar,
+  .nav-links,
+  .photo-container {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .main-content,
+  .formation-tabs-container,
+  .contact-container {
+    padding: 10px;
+  }
 
+  .vertical-separator {
+    width: 100%;
+    height: 2px;
+    margin: 20px 0;
+  }
 
+  .nav-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+}
