@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/cv_john_waia/static/css/main.cb28c1c1.css",
-    "main.js": "/cv_john_waia/static/js/main.cc9cd6cb.js",
+    "main.css": "/cv_john_waia/static/css/main.451bee64.css",
+    "main.js": "/cv_john_waia/static/js/main.f327e6c9.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "index.html": "/cv_john_waia/index.html",
-    "main.cb28c1c1.css.map": "/cv_john_waia/static/css/main.cb28c1c1.css.map",
-    "main.cc9cd6cb.js.map": "/cv_john_waia/static/js/main.cc9cd6cb.js.map",
+    "main.451bee64.css.map": "/cv_john_waia/static/css/main.451bee64.css.map",
+    "main.f327e6c9.js.map": "/cv_john_waia/static/js/main.f327e6c9.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb28c1c1.css",
-    "static/js/main.cc9cd6cb.js"
+    "static/css/main.451bee64.css",
+    "static/js/main.f327e6c9.js"
   ]
 }
