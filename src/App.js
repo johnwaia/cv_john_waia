@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import FormationTabs from "./formations/formation";
 import Experiences from './experiences/experiences';
 import Competences from './competences/Competences'; 
@@ -25,8 +28,6 @@ const tabs = [
   'Projets',
 ];
 
-
-
 const tabTooltips = {
   Formations: "Mon parcours académique",
   Projets: "Consultez mes projets",
@@ -40,9 +41,8 @@ const tabTooltips = {
 
 
 
-
 function App() {
-   const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState('Description');
   const [showWelcome, setShowWelcome] = useState(true);
@@ -60,6 +60,31 @@ function App() {
     const nextIndex = activeIndex === tabs.length - 1 ? 0 : activeIndex + 1;
     setActiveTab(tabs[nextIndex]);
   };
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      toast.info(
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWludjk1eHEzbTh4bjM4dHI3a3BkdnRxdDF0d3l3cDl4NjNodTg4dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Sg58K9YM5nuOW5ONMd/200w.webp"
+            alt="Moon"
+            style={{ width: '50px', marginRight: '10px' }}
+          />
+          <span>Il va faire tout noir 🌙</span>
+        </div>,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      );
+    }
+  }, [darkMode]);
 
   const TabContent = () => {
     switch (activeTab) {
@@ -109,7 +134,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${darkMode ? 'dark-mode' : ''}`}>
       <button 
         onClick={() => {
           const prevIndex = tabs.indexOf(activeTab) === 0 ? tabs.length - 1 : tabs.indexOf(activeTab) - 1;
@@ -149,9 +174,10 @@ function App() {
             }}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          
         </div>
+       
         <nav className="nav-links">
-
           {filteredTabs.map((tab) => (
              <button
                 key={tab}
@@ -163,9 +189,30 @@ function App() {
               >
                 {tab}
             </button>
-
           ))}
+         
         </nav>
+        <>
+          <div style={{ margin: '1rem', display: 'flex', alignItems: 'center' }}>
+            <input
+              className="custom-switch"
+              type="checkbox"
+              checked={darkMode}
+              onChange={() => setDarkMode(!darkMode)}
+              id="customSwitch"
+            />
+            <label
+              htmlFor="customSwitch"
+              style={{ color: 'white', marginLeft: '1rem', fontSize: '1rem' }}
+            >
+              {darkMode ? 'Dark Mode' : 'Light Mode'}
+            </label>
+          </div>
+
+
+          {/* Afficheur de notifications */}
+        <ToastContainer />
+      </>
       </header>
       
       <main className="main-content">
