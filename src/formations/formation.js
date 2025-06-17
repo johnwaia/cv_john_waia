@@ -1,5 +1,5 @@
 // FormationTabs.js
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 
 const formationsData = [
   {
@@ -52,10 +52,19 @@ const formationsData = [
 
 function FormationTabs() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   const activeFormation = formationsData[activeIndex];
 
   return (
-    <div style={{ maxWidth: 700, margin: "auto", fontFamily: "Arial, sans-serif" }}>
+    <div style={{ maxWidth: 700, margin: "auto", fontFamily: "Arial, sans-serif", overflowX: "hidden" }}>
       <nav
         role="tablist"
         aria-label="Formations"
@@ -65,9 +74,10 @@ function FormationTabs() {
           marginBottom: 20,
           flexWrap: "wrap",
           borderBottom: "2px solid #ddd",
+          justifyContent: "center",
         }}
       >
-        {formationsData.map(({ title, school }, i) => (
+        {formationsData.map(({ title }, i) => (
           <button
             key={i}
             role="tab"
@@ -93,45 +103,63 @@ function FormationTabs() {
           </button>
         ))}
       </nav>
-      
-      <section
-        id={`formation-panel-${activeIndex}`}
-        role="tabpanel"
-        aria-labelledby={`formation-tab-${activeIndex}`}
-        style={{ display: "flex", gap: 20, alignItems: "flex-start" }}
-      >
-        {activeFormation.logo && (
-          <img
-            src={activeFormation.logo}
-            alt={`Logo de ${activeFormation.school}`}
-            style={{ width: 100, height: 100, objectFit: "contain", borderRadius: 8, flexShrink: 0 }}
-          />
-        )}
-        {activeFormation.gif && (
-            <img
-              src={activeFormation.gif}
-              alt={`Illustration pour ${activeFormation.title}`}
-              style={{ width: 120, height: 120, objectFit: "cover", borderRadius: 8, flexShrink: 0 }}
-            />
-          )}
 
-        <div>
-          <h3 style={{ margin: "0 0 10px" }}>
-            {activeFormation.title} – {activeFormation.school}
-          </h3>
-          <p style={{ fontStyle: "italic", margin: "0 0 10px" }}>
-            <time dateTime={activeFormation.start}>{activeFormation.start}</time> –{" "}
-            <time dateTime={activeFormation.end}>{activeFormation.end}</time>
-          </p>
-          <ul style={{ margin: 0, paddingLeft: 20 }}>
-            {activeFormation.details.map((detail, i) => (
-              <li key={i} style={{ marginBottom: 6 }}>
-                {detail}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <section
+  id={`formation-panel-${activeIndex}`}
+  role="tabpanel"
+  aria-labelledby={`formation-tab-${activeIndex}`}
+  style={{
+    display: "flex",
+    flexDirection: "column", // par défaut empile verticalement (mobile)
+    gap: 20,
+    alignItems: "center",
+  }}
+>
+  <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+    {activeFormation.logo && (
+      <img
+        src={activeFormation.logo}
+        alt={`Logo de ${activeFormation.school}`}
+        style={{
+          width: 80,
+          height: 80,
+          objectFit: "contain",
+          borderRadius: 8,
+        }}
+      />
+    )}
+    {activeFormation.gif && (
+      <img
+        src={activeFormation.gif}
+        alt={`Illustration pour ${activeFormation.title}`}
+        style={{
+          width: 100,
+          height: 100,
+          objectFit: "cover",
+          borderRadius: 8,
+        }}
+      />
+    )}
+  </div>
+
+  <div style={{ textAlign: "left", width: "100%" }}>
+    <h3 style={{ margin: "10px 0" }}>
+      {activeFormation.title} – {activeFormation.school}
+    </h3>
+    <p style={{ fontStyle: "italic", margin: "0 0 10px" }}>
+      <time dateTime={activeFormation.start}>{activeFormation.start}</time> –{" "}
+      <time dateTime={activeFormation.end}>{activeFormation.end}</time>
+    </p>
+    <ul style={{ margin: 0, paddingLeft: 20 }}>
+      {activeFormation.details.map((detail, i) => (
+        <li key={i} style={{ marginBottom: 6 }}>
+          {detail}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
     </div>
   );
 }

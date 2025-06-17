@@ -43,9 +43,27 @@ const Contact = () => {
         <div className="vertical-separator" />
 
         <div className="footer-message">
-          <h4>Envoyer un message</h4>
+          <h4>Envoyez moi un message</h4>
           {state.succeeded ? (
-            <p className="success-msg">✅ Merci pour ton message !</p>
+            <div className="success-container">
+              <p className="success-msg">✅ Merci pour ton message !</p>
+              <img
+              style={{
+                  width: '100%',
+                  maxWidth: '150px',
+                  height: 'auto',
+                  borderRadius: '12px',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
+                  display: 'block',
+                  margin: '0 auto',
+                  transition: 'transform 0.3s ease',
+                  cursor: 'pointer',
+                }}
+                src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmcwMGk5ZXRsdjFweHprY3VuOWxwamc2eTl2cmxmbTNpamhqaWo0MSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AeWoyE3ZT90YM/200w.webp"
+                alt="Merci"
+                className="thank-you-gif"
+              />
+            </div>
           ) : (
             <form onSubmit={handleSubmit}>
               <label htmlFor="email">Adresse email</label>
@@ -72,6 +90,7 @@ const Contact = () => {
             </form>
           )}
         </div>
+
       </div>
     </footer>
   );

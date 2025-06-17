@@ -2,20 +2,43 @@ import React from 'react';
 
 const Description = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-      <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '1rem',
+        padding: '1rem',
+        boxSizing: 'border-box',
+        maxWidth: '100%',
+        overflowX: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '1rem',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          textAlign: 'left',
+          width: '100%',
+          maxWidth: '800px',
+        }}
+      >
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Logo_Efrei_2022.svg/1200px-Logo_Efrei_2022.svg.png"
           alt="Logo Efrei Paris"
-          style={{ width: '120px', height: 'auto' }}
+          style={{ width: '120px', height: 'auto', flexShrink: 0 }}
         />
-        <div>
-          <p style={{ margin: 0 }}>
+        <div style={{ flex: 1, minWidth: '250px' }}>
+          <p style={{ margin: 0, wordBreak: 'break-word' }}>
             Mon nom est John Waia, j'ai 24 ans à la recherche d'une alternance en tant que Développeur Full Stack.
             Étudiant en informatique, permis B<br /><br />
-            Rythme d'alternance : 1 sem école / 2 sem entreprise<br />
-            Début : 01/09/2025 • Durée : 24 mois<br />
-            Objectif : Mastère Dev Manager Full Stack – Efrei Paris
+            <strong>Rythme d'alternance :</strong> 1 sem école / 2 sem entreprise<br />
+            <strong>Début :</strong> 01/09/2025 • <strong>Durée :</strong> 24 mois<br />
+            <strong>Objectif :</strong> Mastère Dev Manager Full Stack – Efrei Paris
           </p>
           <blockquote
             style={{
@@ -45,8 +68,8 @@ const Description = () => {
           transition: 'transform 0.3s ease',
           cursor: 'pointer',
         }}
-        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.1)')}
-        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
       />
     </div>
   );
