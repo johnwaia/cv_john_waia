@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const notifyVisit = async () => {
+  try {
+    await fetch('visitor-notifier-production.up.railway.app', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
+    });
+    console.log('Notification envoyée au backend');
+  } catch (error) {
+    console.error('Erreur lors de l’envoi de la notification :', error);
+  }
+};
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// ⏱️ Appel automatique de notifyVisit dès que l'app démarre
+const RootWithNotify = () => {
+  useEffect(() => {
+    notifyVisit();
+  }, []);
+
+  return (
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<RootWithNotify />);
+
+// Facultatif : mesure des performances
 reportWebVitals();
