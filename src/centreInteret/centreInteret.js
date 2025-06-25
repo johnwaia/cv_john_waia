@@ -54,6 +54,7 @@ export default function Interests() {
           { label: 'Boxe 🥊', value: 'boxe' },
           { label: 'Informatique 💻', value: 'info' },
           { label: 'Cryptomonnaie 🪙', value: 'cryptomonnaie' },
+          { label: 'Anime 🎌', value: 'anime' },
         ].map(({ label, value }) => (
           <button
             key={value}
@@ -131,6 +132,25 @@ export default function Interests() {
               <p style={{ fontStyle: 'normal', color: '#666', fontSize: '0.9rem' }}>
                 (Si vous n'y croyez pas ou ne comprenez pas, je n'ai pas le temps d'essayer de vous convaincre, désolé.)
               </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {interestTab === 'anime' && (
+        <div style={isMobile ? responsiveStyle : containerStyle}>
+          <img
+            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWU0enhhbWw1Y3EyaWJvYWVnZjlhN2Y2OHlrMjd5ZGhtbGdiMThsciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t0bSJQ3Qoc9ag/giphy.webp"
+            alt="Anime GIF"
+            style={imageStyle}
+          />
+          <div>
+            <blockquote style={contentStyle}>
+              "Les animés et mangas sont bien plus qu’un divertissement : ils véhiculent des valeurs de courage, de persévérance et d’amitié à travers des récits souvent profonds et émotionnels. Chaque univers m’inspire à voir la vie autrement, à rêver plus grand et à repousser mes propres limites."
+            </blockquote>
+            <div style={quoteStyle}>
+              <p style={{ marginBottom: '5px', fontWeight: 'bold' }}>Rock Lee – *Naruto*</p>
+              <p>"Un loser peut surpasser un génie avec suffisamment d’efforts."</p>
             </div>
           </div>
         </div>

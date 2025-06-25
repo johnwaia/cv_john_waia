@@ -24,6 +24,7 @@ const formationsData = [
       "Formation pratique en développement logiciel.",
     ],
     gif: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNG1sOWxyMGJkaWsyczZuZXF6YWN6cnI0YWsxcnhvaDZyZnZqMjQ3NCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AspxmCZmV8kEG2VS8M/200w.webp", // Découverte info
+    diplomaLink: "https://drive.google.com/file/d/1GaxzoSxO6jGFykzOwXuJYI8WRr9oMG_f/view?usp=drive_link",  
   },
   {
     title: "BREVET DE TECHNICIEN SUPÉRIEUR (BTS) BÂTIMENT",
@@ -35,6 +36,7 @@ const formationsData = [
       "Apprentissage des normes et matériaux du bâtiment.",
     ],
     gif: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2ZpdjJqZWZjYXFqcDVoejk3MGFjOWdmYnV0d3QzNzFiM3FkMzdyOCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/g4nHG6pBP525q/200.webp", // Chantier
+     diplomaLink: "https://drive.google.com/file/d/1_CYYN4uxCnfaUqgQPSCUD3Yeuad0-xBI/view?usp=sharing",
   },
   {
     title: "BACCALAURÉAT SCIENCES ET TECHNOLOGIES DE L'INDUSTRIE ET DU DÉVELOPPEMENT DURABLE (STI2D)",
@@ -46,6 +48,7 @@ const formationsData = [
       "Projets technologiques et développement durable.",
     ],
     gif: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXR1ZXJ2OWZ4eGJlbGJ2ZXBxNXM2Yzh5am44NWN4cHE0eWl2M2F1diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oEduUGL2JaSK7oS76/200.webp", // Écologie / tech
+    diplomaLink: "https://drive.google.com/file/d/12irhTl7OSRp6AeWePUQb6xxCj7PiWEFg/view?usp=sharing",
   },
 ];
 
@@ -105,16 +108,16 @@ function FormationTabs() {
       </nav>
 
       <section
-  id={`formation-panel-${activeIndex}`}
-  role="tabpanel"
-  aria-labelledby={`formation-tab-${activeIndex}`}
-  style={{
-    display: "flex",
-    flexDirection: "column", // par défaut empile verticalement (mobile)
-    gap: 20,
-    alignItems: "center",
-  }}
->
+        id={`formation-panel-${activeIndex}`}
+        role="tabpanel"
+        aria-labelledby={`formation-tab-${activeIndex}`}
+        style={{
+          display: "flex",
+          flexDirection: "column", // par défaut empile verticalement (mobile)
+          gap: 20,
+          alignItems: "center",
+        }}
+      >
   <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
     {activeFormation.logo && (
       <img
@@ -140,6 +143,7 @@ function FormationTabs() {
         }}
       />
     )}
+    
   </div>
 
   <div style={{ textAlign: "left", width: "100%" }}>
@@ -156,7 +160,28 @@ function FormationTabs() {
           {detail}
         </li>
       ))}
+
     </ul>
+          {activeFormation.diplomaLink && (
+        <p style={{ marginTop: 10 }}>
+          <a
+            href={activeFormation.diplomaLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              padding: "8px 16px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              textDecoration: "none",
+              borderRadius: 4,
+              fontWeight: "bold",
+            }}
+          >
+            Voir le diplôme
+          </a>
+        </p>
+      )}
   </div>
 </section>
 
