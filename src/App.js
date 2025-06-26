@@ -13,6 +13,7 @@ import Interests from './centreInteret/centreInteret';
 import { softSkillsList } from './softSkill/softskillList';
 import Description from './Description';
 import Contact from './Contact';
+import Stats from './Stats/stats';
 
 import { Input, Ripple, initMDB } from "mdb-ui-kit";
 initMDB({ Input, Ripple });
@@ -26,6 +27,7 @@ const tabs = [
   'Soft Skills',
   'Langues',
   'Projets',
+  'Consultations',
 ];
 
 const tabTooltips = {
@@ -37,6 +39,7 @@ const tabTooltips = {
   'Centres d’intérêt': "Mes passions et loisirs",
   'Soft Skills': "Mes compétences interpersonnelles",
   'Langues': "Mes compétences linguistiques",
+  'Consultations': "Statistiques de consultation du CV"
 };
 
 
@@ -47,19 +50,11 @@ function App() {
   const [activeTab, setActiveTab] = useState('Description');
   const [showWelcome, setShowWelcome] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [visitCount, setVisitCount] = useState(0);
+  const [visitorRank, setVisitorRank] = useState(null);
   const filteredTabs = tabs.filter(tab => 
     tab.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  const goPrevTab = () => {
-    const prevIndex = activeIndex === 0 ? tabs.length - 1 : activeIndex - 1;
-    setActiveTab(tabs[prevIndex]);
-  };
-
-  // Fonction pour aller à l'onglet suivant
-  const goNextTab = () => {
-    const nextIndex = activeIndex === tabs.length - 1 ? 0 : activeIndex + 1;
-    setActiveTab(tabs[nextIndex]);
-  };
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -85,6 +80,15 @@ function App() {
       );
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    // Simule une API ou stockage local
+    const storedVisits = parseInt(localStorage.getItem('cvVisitCount') || '0', 10);
+    const newCount = storedVisits + 1;
+    localStorage.setItem('cvVisitCount', newCount);
+    setVisitCount(newCount);
+    setVisitorRank(newCount);
+  }, []);
 
   const TabContent = () => {
     switch (activeTab) {
@@ -125,9 +129,11 @@ function App() {
             </ul>
           );
         
-        
         case 'Projets':
           return <Projets />;
+        
+        case 'Consultations':
+          return <Stats />;
 
         default:
         return null;

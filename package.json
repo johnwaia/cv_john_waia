@@ -13,6 +13,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.6",
+    "canvas-confetti": "^1.9.3",
     "framer-motion": "^12.19.1",
     "mdb-react-ui-kit": "^9.0.0",
     "mdb-ui-kit": "^9.0.0",
