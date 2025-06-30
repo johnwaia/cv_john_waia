@@ -34,8 +34,8 @@ const Description = () => {
         />
         <div style={{ flex: 1, minWidth: '250px' }}>
           <p style={{ margin: 0, wordBreak: 'break-word' }}>
-            Mon nom est John Waia, j'ai 24 ans à la recherche d'une alternance en tant que Développeur Full Stack.
-            Étudiant en informatique, permis B<br /><br />
+            Je m'appelle John Waia, j'ai 24 ans et je suis actuellement à la recherche d'une alternance en tant que Développeur Full Stack.
+Étudiant en informatique et titulaire du permis B, je suis conscient de ne pas encore maîtriser tous les langages de programmation, mais je suis motivé à en apprendre un maximum afin de développer un profil polyvalent et complet.<br /><br />
             <strong>Rythme d'alternance :</strong> 1 sem école / 2 sem entreprise<br />
             <strong>Début :</strong> 01/09/2025 • <strong>Durée :</strong> 24 mois<br />
             <strong>Objectif :</strong> Mastère Dev Manager Full Stack – Efrei Paris

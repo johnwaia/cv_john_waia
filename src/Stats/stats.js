@@ -1,40 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
-import obamaImage from '../assets/obamaImage.png'; // adapte le chemin si besoin
+import obamaImage from '../assets/obamaImage.png';
 
+const API_URL = 'https://visitor-notifier-production.up.railway.app/visit';
 
 const Stats = () => {
-  const [visitors, setVisitors] = useState([]);
   const [visitorRank, setVisitorRank] = useState(null);
+  const [totalVisitors, setTotalVisitors] = useState(0);
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem('cv_visitors')) || [];
-    const sessionId = sessionStorage.getItem('session_id') || Date.now().toString();
-
-    let isNewVisitor = false;
-
-    if (!sessionStorage.getItem('session_id')) {
+    let sessionId = sessionStorage.getItem('session_id');
+    if (!sessionId) {
+      sessionId = crypto.randomUUID();
       sessionStorage.setItem('session_id', sessionId);
     }
 
-    if (!stored.includes(sessionId)) {
-      const updated = [...stored, sessionId];
-      localStorage.setItem('cv_visitors', JSON.stringify(updated));
-      setVisitors(updated);
-      setVisitorRank(updated.indexOf(sessionId) + 1);
-      isNewVisitor = true;
-    } else {
-      setVisitors(stored);
-      setVisitorRank(stored.indexOf(sessionId) + 1);
-    }
+  fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionId })
+    })
+      .then(res => res.json())
+      .then(data => {
+        setVisitorRank(data.rank);
+        setTotalVisitors(data.totalVisitors);
 
-    if (isNewVisitor) {
-      confetti({
-        particleCount: 150,
-        spread: 70,
-        origin: { y: 0.6 },
+        if (data.isNewVisitor) {
+          confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
+        }
+      })
+      .catch(err => {
+        console.error('Erreur lors de la récupération des stats visiteurs:', err);
       });
-    }
   }, []);
 
   return (
@@ -45,12 +46,7 @@ const Stats = () => {
       fontFamily: 'Arial, sans-serif',
       padding: '20px',
     }}>
-      {/* Conteneur image + texte */}
-      <div style={{
-        position: 'relative',
-        width: '300px',
-        marginBottom: '20px'
-      }}>
+      <div style={{ position: 'relative', width: '300px', marginBottom: '20px' }}>
         <img
           src={obamaImage}
           alt="Homme tenant un panneau"
@@ -66,11 +62,10 @@ const Stats = () => {
           fontWeight: 'bold',
           fontSize: '16px'
         }}>
-          👋 Total Visiteurs : {visitors.length}
+          👋 Total Visiteurs : {totalVisitors}
         </div>
       </div>
 
-      {/* Rang du visiteur */}
       <p style={{ fontSize: '18px' }}>
         Vous êtes le <strong>{visitorRank}</strong> visiteur de mon CV.
       </p>

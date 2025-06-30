@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 const notifyVisit = async () => {
   try {
-    await fetch('visitor-notifier-production.up.railway.app', {
+      await fetch('https://visitor-notifier-production.up.railway.app/visit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
