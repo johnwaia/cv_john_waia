@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 import obamaImage from '../assets/obamaImage.png';
 
-const API_URL = 'https://visitor-notifier-production.up.railway.app/visit';
+const API_URL = 'https://visitor-notifier.onrender.com/visit'; // 🔧 Mise à jour URL
 
 const Stats = () => {
   const [visitorRank, setVisitorRank] = useState(null);

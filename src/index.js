@@ -4,14 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// 🔧 CORRECTION : bon endpoint
 const notifyVisit = async () => {
   try {
-      await fetch('https://visitor-notifier-production.up.railway.app/visit', {
+    const sessionId = sessionStorage.getItem('session_id') || crypto.randomUUID();
+    sessionStorage.setItem('session_id', sessionId);
+
+    await fetch('https://visitor-notifier.onrender.com/visit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({})
+      body: JSON.stringify({ sessionId }) // 🔧 Body requis
     });
     console.log('Notification envoyée au backend');
   } catch (error) {
@@ -19,7 +23,6 @@ const notifyVisit = async () => {
   }
 };
 
-// ⏱️ Appel automatique de notifyVisit dès que l'app démarre
 const RootWithNotify = () => {
   useEffect(() => {
     notifyVisit();
@@ -35,5 +38,4 @@ const RootWithNotify = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RootWithNotify />);
 
-// Facultatif : mesure des performances
 reportWebVitals();
