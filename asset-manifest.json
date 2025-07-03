@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/cv_john_waia/static/css/main.ff10e523.css",
-    "main.js": "/cv_john_waia/static/js/main.e41ff6d8.js",
+    "main.css": "/cv_john_waia/static/css/main.97416ee1.css",
+    "main.js": "/cv_john_waia/static/js/main.8ff3505b.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "static/media/obamaImage.png": "/cv_john_waia/static/media/obamaImage.9b8298b8671d11146bbf.png",
     "index.html": "/cv_john_waia/index.html",
-    "main.ff10e523.css.map": "/cv_john_waia/static/css/main.ff10e523.css.map",
-    "main.e41ff6d8.js.map": "/cv_john_waia/static/js/main.e41ff6d8.js.map",
+    "main.97416ee1.css.map": "/cv_john_waia/static/css/main.97416ee1.css.map",
+    "main.8ff3505b.js.map": "/cv_john_waia/static/js/main.8ff3505b.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ff10e523.css",
-    "static/js/main.e41ff6d8.js"
+    "static/css/main.97416ee1.css",
+    "static/js/main.8ff3505b.js"
   ]
 }
