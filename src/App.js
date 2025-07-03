@@ -113,23 +113,29 @@ function App() {
             return <Interests />;
 
         case 'Soft Skills':
-        return <SoftSkills softSkillsList={softSkillsList} />;
+          return <SoftSkills softSkillsList={softSkillsList} />;
 
         case 'Langues':
           return (
-            <ul className="list-none p-0">
-              <li className="flex items-center mb-2">
-                <span className="text-xl mr-2">🇫🇷</span>
-                <span>Français : <span className="font-semibold">Courant</span></span>
+            <ul className="langue-list">
+              <li className="langue-item">
+                <span className="langue-icon">🇫🇷</span>
+                <span>
+                  Français : <span className="langue-niveau">Courant</span>
+                </span>
               </li>
-              <li className="flex items-center">
-                <span className="text-xl mr-2">🇬🇧</span>
-                <span>Anglais : <span className="font-semibold">B1</span></span>
+              <li className="langue-item">
+                <span className="langue-icon">🇬🇧</span>
+                <span>
+                  Anglais : <span className="langue-niveau">B1</span>
+                </span>
               </li>
             </ul>
           );
+
         
-        case 'Projets':
+        
+          case 'Projets':
           return <Projets />;
         
         case 'Consultations':
