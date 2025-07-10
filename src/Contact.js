@@ -31,7 +31,7 @@ const Contact = () => {
           <div className="contact-item">
             🔗 <strong>LinkedIn :</strong>{' '}
             <a
-              href="https://www.linkedin.com/in/john-waia-314251218"
+              href="https://www.linkedin.com/in/john-wa%C3%AFa-314251218/"
               target="_blank"
               rel="noopener noreferrer"
             >
