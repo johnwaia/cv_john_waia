@@ -1,8 +1,15 @@
 // project.js
 import React, { useState } from 'react';
 import ProjetTabs from './projetTabs';
+import commandeHelp from '../assets/commande_help.PNG';
+import commandeHist from '../assets/commande_hist.PNG';
+import EntreeCommande from '../assets/Entree_commande.PNG';
+import FenetrePopUp from '../assets/Fenetre_PopUp_commande.PNG';
+import PageAcceuil from '../assets/Page_acceuil.PNG';
+import ResultatCommande from  '../assets/resultat_commande.PNG';
 
 const Projets = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
   const [ongletActif, setOngletActif] = useState('pédagogiques');
   const [selectedTab, setSelectedTab] = useState('Fonctions');
   const renderContenu = () => {
@@ -156,8 +163,33 @@ const Projets = () => {
                     Ce projet propose un moteur de recherche puissant pour les réseaux sociaux permettant de rechercher avec un prompt et d'utiliser une liste complète de commandes.
                     </p>
 
+                    {selectedImage && (
+                                <div
+                                    onClick={() => setSelectedImage(null)}
+                                    style={{
+                                    position: 'fixed',
+                                    top: 0,
+                                    left: 0,
+                                    width: '100vw',
+                                    height: '100vh',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    zIndex: 9999,
+                                    cursor: 'pointer',
+                                    }}
+                                >
+                                    <img
+                                    src={selectedImage}
+                                    alt="Agrandissement"
+                                    style={{ maxHeight: '90vh', maxWidth: '90vw', borderRadius: '8px' }}
+                                    />
+                                </div>
+                                )}
+
                     <ProjetTabs
-                    tabs={['Description', 'Commandes','Fonctionnement','Technologie']}
+                    tabs={['Description', 'Captures', 'Commandes','Fonctionnement','Technologie']}
                     renderContent={(selectedTab) => {
                         switch (selectedTab) {
                         case 'Description':
@@ -222,7 +254,24 @@ const Projets = () => {
                                 </ul>
                                 </div>
                             );
-
+                        
+                        case 'Captures':
+                            return (
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                                    <img src={FenetrePopUp} alt="fenetre expliquant les commandes" style={{ width: '300px', borderRadius: '8px', cursor: 'pointer' }}
+                                        onClick={() => setSelectedImage(FenetrePopUp)}/>
+                                    <img src={PageAcceuil} alt="Page d'acceuil" style={{ width: '300px', borderRadius: '8px', cursor: 'pointer' }}
+                                        onClick={() => setSelectedImage(PageAcceuil)} />
+                                    <img src={EntreeCommande} alt="Page lors de l'entree d'une commande" style={{ width: '300px', borderRadius: '8px', cursor: 'pointer' }}
+                                        onClick={() => setSelectedImage(EntreeCommande)} />
+                                    <img src={ResultatCommande} alt="Affichage de l'execution d'une commande" style={{ width: '300px', borderRadius: '8px', cursor: 'pointer' }}
+                                        onClick={() => setSelectedImage(ResultatCommande)} />
+                                    <img src={commandeHelp} alt="Affichage commande Help" style={{ width: '300px', borderRadius: '8px', cursor: 'pointer' }}
+                                        onClick={() => setSelectedImage(commandeHelp)} />
+                                    <img src={commandeHist} alt="Affichage commande Hist" style={{ width: '300px', borderRadius: '8px', cursor: 'pointer' }}
+                                        onClick={() => setSelectedImage(commandeHist)} />
+                                </div>
+                            );
                             default:
                             return null;
                         }
