@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cv_john_waia/static/css/main.97416ee1.css",
-    "main.js": "/cv_john_waia/static/js/main.c33fb35a.js",
+    "main.js": "/cv_john_waia/static/js/main.0fb97d35.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "static/media/obamaImage.png": "/cv_john_waia/static/media/obamaImage.9b8298b8671d11146bbf.png",
     "static/media/resultat_commande.PNG": "/cv_john_waia/static/media/resultat_commande.609ff4fa98ebdd843068.PNG",
@@ -12,11 +12,11 @@
     "static/media/Entree_commande.PNG": "/cv_john_waia/static/media/Entree_commande.9b82bbddb559c2795616.PNG",
     "index.html": "/cv_john_waia/index.html",
     "main.97416ee1.css.map": "/cv_john_waia/static/css/main.97416ee1.css.map",
-    "main.c33fb35a.js.map": "/cv_john_waia/static/js/main.c33fb35a.js.map",
+    "main.0fb97d35.js.map": "/cv_john_waia/static/js/main.0fb97d35.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.97416ee1.css",
-    "static/js/main.c33fb35a.js"
+    "static/js/main.0fb97d35.js"
   ]
 }
