@@ -1,17 +1,26 @@
 // project.js
 import React, { useState } from 'react';
 import ProjetTabs from './projetTabs';
-import commandeHelp from '../assets/commande_help.PNG';
-import commandeHist from '../assets/commande_hist.PNG';
-import EntreeCommande from '../assets/Entree_commande.PNG';
-import FenetrePopUp from '../assets/Fenetre_PopUp_commande.PNG';
-import PageAcceuil from '../assets/Page_acceuil.PNG';
-import ResultatCommande from  '../assets/resultat_commande.PNG';
+import commandeHelp from '../assets/CaptureProjetMoteurRecherche/commande_help.PNG';
+import commandeHist from '../assets/CaptureProjetMoteurRecherche/commande_hist.PNG';
+import EntreeCommande from '../assets/CaptureProjetMoteurRecherche/Entree_commande.PNG';
+import FenetrePopUp from '../assets/CaptureProjetMoteurRecherche/Fenetre_PopUp_commande.PNG';
+import PageAcceuil from '../assets/CaptureProjetMoteurRecherche/Page_acceuil.PNG';
+import ResultatCommande from  '../assets/CaptureProjetMoteurRecherche/resultat_commande.PNG';
 
 const Projets = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [ongletActif, setOngletActif] = useState('pédagogiques');
   const [selectedTab, setSelectedTab] = useState('Fonctions');
+  const imageStyle = {
+    width: '100%',
+    maxWidth: '400px',
+    height: 'auto',
+    marginTop: '0.5rem',
+    borderRadius: '8px',
+    boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
+    };
+
   const renderContenu = () => {
     switch (ongletActif) {
         case 'pédagogiques':
@@ -324,91 +333,138 @@ const Projets = () => {
                 )}
 
                 {selectedTab === 'Aperçu' && (
-                    <>
+                <>
                     <h4 style={{ marginBottom: '1rem' }}>📸 Aperçu de l’application</h4>
-                    <ul style={{ listStyleType: 'none', padding: 0, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                        <li>
+                    <ul
+                    style={{
+                        listStyleType: 'none',
+                        padding: 0,
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                        gap: '1.5rem',
+                    }}
+                    >
+                    <li>
+                        <strong>Logo de l'application</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/logo_application_smartphone.jpg"
+                        alt="Logo de l'application"
+                        style={imageStyle}
+                        />
+                    </li>
+
+                    <li>
                         <strong>Page d'accueil</strong>
                         <br />
                         <img
-                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/page_acceuil.jpg"
-                            alt="Page d'accueil"
-                            style={{
-                            width: '100%',
-                            maxWidth: '400px',
-                            height: 'auto',
-                            marginTop: '0.5rem',
-                            borderRadius: '8px',
-                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-                            }}
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/page_acceuil.jpg"
+                        alt="Page d'accueil"
+                        style={imageStyle}
                         />
-                        </li>
-                        <li>
-                        <strong>Affichage Emploi du temps</strong>
+                    </li>
+
+                    <li>
+                        <strong>Affichage des cours</strong>
                         <br />
                         <img
-                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/affichage_cours.jpg"
-                            alt="Affichage Emploi du temps"
-                            style={{
-                            width: '100%',
-                            maxWidth: '400px',
-                            height: 'auto',
-                            marginTop: '0.5rem',
-                            borderRadius: '8px',
-                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-                            }}
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/affichage_cours.jpg"
+                        alt="Affichage des cours"
+                        style={imageStyle}
                         />
-                        </li>
-                        <li>
-                        <strong>Détail Cours</strong>
+                    </li>
+
+                    <li>
+                        <strong>Détails d’un cours</strong>
                         <br />
                         <img
-                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/d%C3%A9tails_cours.jpg"
-                            alt="Détail Cours"
-                            style={{
-                            width: '100%',
-                            maxWidth: '400px',
-                            height: 'auto',
-                            marginTop: '0.5rem',
-                            borderRadius: '8px',
-                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-                            }}
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/d%C3%A9tails_cours.jpg"
+                        alt="Détails d’un cours"
+                        style={imageStyle}
                         />
-                        </li>
-                        <li>
-                        <strong>Organisation de réunion</strong>
+                    </li>
+
+                    <li>
+                        <strong>Menu latéral</strong>
                         <br />
                         <img
-                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/organiser_des_r%C3%A9unions.jpg"
-                            alt="Organisation de réunion"
-                            style={{
-                            width: '100%',
-                            maxWidth: '400px',
-                            height: 'auto',
-                            marginTop: '0.5rem',
-                            borderRadius: '8px',
-                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-                            }}
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/menu.jpg"
+                        alt="Menu latéral"
+                        style={imageStyle}
                         />
-                        </li>
-                        <li>
+                    </li>
+
+                    <li>
+                        <strong>Organiser une réunion</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/organiser_des_r%C3%A9unions.jpg"
+                        alt="Organiser une réunion"
+                        style={imageStyle}
+                        />
+                    </li>
+
+                    <li>
+                        <strong>Groupe étudiant</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/groupe_%C3%A9tudiant.jpg"
+                        alt="Groupe étudiant"
+                        style={imageStyle}
+                        />
+                    </li>
+
+                    <li>
                         <strong>Créneaux communs</strong>
                         <br />
                         <img
-                            src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/Affichage_des_cr%C3%A9neaux.jpg"
-                            alt="Créneaux communs"
-                            style={{
-                            width: '100%',
-                            maxWidth: '400px',
-                            height: 'auto',
-                            marginTop: '0.5rem',
-                            borderRadius: '8px',
-                            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-                            }}
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/Affichage_des_cr%C3%A9neaux.jpg"
+                        alt="Créneaux communs"
+                        style={imageStyle}
                         />
-                        </li>
+                    </li>
+
+                    <li>
+                        <strong>Création événement personnel</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/Affichage_creation_personnal_events.jpg"
+                        alt="Création événement personnel"
+                        style={imageStyle}
+                        />
+                    </li>
+
+                    <li>
+                        <strong>Test création événement</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/test_creation_personnal%20event.jpg"
+                        alt="Test création événement personnel"
+                        style={imageStyle}
+                        />
+                    </li>
+
+                    <li>
+                        <strong>Affichage événement personnel</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/Affichage_personnal_event.jpg"
+                        alt="Affichage événement personnel"
+                        style={imageStyle}
+                        />
+                    </li>
+
+                    <li>
+                        <strong>Détails événement personnel</strong>
+                        <br />
+                        <img
+                        src="https://github.com/johnwaia/test_app/raw/main/assets/screenshots/Affichage_details_personnal_event.jpg"
+                        alt="Détails événement personnel"
+                        style={imageStyle}
+                        />
+                    </li>
                     </ul>
-                    </>
+                </>
                 )}
 
                 {selectedTab === 'Prérequis' && (
@@ -458,19 +514,33 @@ const Projets = () => {
                 )}
 
                 {selectedTab === 'Lancement' && (
-                    <>
-                    <h4>⚙️ Lancer le projet</h4>
+                <>
+                    <h4>⚙️ Lancer le projet localement</h4>
                     <pre>
-                        <code>
-                            {`git clone https://github.com/johnwaia/test_app.git
-                            cd test_app
-                            flutter pub get
-                            flutter doctor
-                            flutter run`}
-                        </code>
+                    <code>
+                {`git clone https://github.com/johnwaia/test_app.git
+                cd test_app
+                flutter pub get
+                flutter doctor
+                flutter run`}
+                    </code>
                     </pre>
-                    </>
+
+                    <h4>📱 Télécharger l'application sur smartphone (Android)</h4>
+                    <p>
+                    👉 Téléchargez le fichier APK ici :{' '}
+                    <a
+                        href="https://drive.google.com/file/d/1pu8xpEkScE7waXez33QuJm3siK-jk1dH/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: '#1a73e8', textDecoration: 'underline' }}
+                    >
+                        Télécharger l'application
+                    </a>
+                    </p>
+                </>
                 )}
+
 
                 {selectedTab === 'Notes' && (
                     <>
