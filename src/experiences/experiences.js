@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Prepacommande from '../assets/PreparateurCommande.jpg';
 import LogoCellocal from '../assets/logoCellocal.jpg';
 import LogoScie from '../assets/LogoScie.png';
+import DumbeaMall from '../assets/Dumbea_mall.png';
 
 const experiencesData = [
   {
@@ -190,6 +191,20 @@ const experiencesData = [
       "Nettoyage et remise en ordre des zones de travail après intervention",
     ],
     logo: LogoScie,
+  },
+    {
+    title: "Employé Fruit/Légumes – Dumbea Mall",
+    start: "2025-07-28",
+    end: "2025-08-09",
+    category: "Intérim (Logistique Pro Service)",
+    details: [
+      "Mise en rayon des fruits et légumes selon les consignes de présentation",
+      "Vérification de la qualité et de la fraîcheur des produits",
+      "Vérifier la propreté de l’espace de travail.",
+      "Retirer les fruits/légumes abîmés ou impropres à la vente.",
+      "Regrouper les articles par catégorie pour faciliter le comptage ",
+    ],
+    logo: DumbeaMall,
   }
 
 ];
