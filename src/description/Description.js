@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import johnWaiaPhoto from './assets/john_waia.jpeg';
+import johnWaiaPhoto from '../assets/john_waia.jpeg';
 import './description.css';
 
 const terminalSteps = [

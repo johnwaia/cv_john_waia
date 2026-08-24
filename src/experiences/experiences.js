@@ -3,7 +3,7 @@
 import './experience.css'; // optionnel si tu veux un style spécifique
 import '../cardTabs.css';
 import React, { useState } from 'react';
-import ScrollReveal from '../ScrollReveal';
+import ScrollReveal from '../scrollreveal/ScrollReveal';
 import Prepacommande from '../assets/PreparateurCommande.jpg';
 import LogoCellocal from '../assets/logoCellocal.jpg';
 import LogoScie from '../assets/LogoScie.png';

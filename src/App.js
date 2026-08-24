@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import WelcomePopup from './WelcomePopup';
-import Description from './Description';
+import Description from './description/Description';
 import FormationTabs from './formations/formation';
 import Experiences from './experiences/experiences';
 import Skills from './competences/Competences';
@@ -9,8 +9,8 @@ import { softSkillsList } from './softSkill/softskillList';
 import Interests from './centreInteret/centreInteret';
 import Projets from './projet/project';
 import Stats from './Stats/stats';
-import Contact from './Contact';
-import ScrollReveal from './ScrollReveal';
+import Contact from './contact/Contact';
+import ScrollReveal from './scrollreveal/ScrollReveal';
 import './App.css';
 
 const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';

@@ -1,5 +1,5 @@
 import React from 'react';
-import ScrollReveal from '../ScrollReveal';
+import ScrollReveal from '../scrollreveal/ScrollReveal';
 
 export default function SoftSkills({ softSkillsList }) {
   return (

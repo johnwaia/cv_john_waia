@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ScrollReveal from '../ScrollReveal';
+import ScrollReveal from '../scrollreveal/ScrollReveal';
 import '../cardTabs.css';
 import './competences.css';
 
