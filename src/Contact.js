@@ -10,9 +10,6 @@ const Contact = () => {
       <div className="contact-container">
         <div className="contact-grid">
           <h2>Contact</h2>
-          <div className="contact-item">
-            📞 <strong>Téléphone :</strong> +687 78 59 52
-          </div>
           <div className="contact-item social-icons">
             <a
               href="https://github.com/johnwaia"
