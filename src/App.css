@@ -202,8 +202,19 @@ main {
     font-size: 2rem;
   }
 
+  /* L'empilement "feuilles" (sticky + défilement interne par section) est
+     peu fiable au toucher sur mobile : les sections se recouvrant à 100%
+     de l'écran, le navigateur peut rediriger un balayage en cours vers la
+     section suivante avant la fin de la précédente. Sous ce seuil, on
+     repasse donc à un défilement classique et continu, section après
+     section, sans sticky ni scroll interne. */
   .cv-section {
-    padding: 2.5rem 0;
+    position: static;
+    min-height: 0;
+    max-height: none;
+    overflow-y: visible;
+    padding: 2.5rem 1rem;
+    box-shadow: none;
   }
 
   .hero-content-box {
