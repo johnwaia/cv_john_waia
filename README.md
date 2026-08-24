@@ -67,12 +67,16 @@ cv_john_waia/
 │   ├── App.js / App.css        # Orchestration des sections, mode nuit
 │   ├── index.js                # Point d'entrée React
 │   ├── WelcomePopup.js         # Bulle de bienvenue à l'ouverture
-│   ├── Description.js          # Présentation (photo, bio terminal, indicateur scroll)
-│   ├── description.css
-│   ├── ScrollReveal.js         # Composant générique d'animation au scroll
-│   ├── ScrollReveal.css
 │   ├── cardTabs.css            # Styles partagés des onglets "façon carte"
-│   ├── Contact.js / contact.css
+│   ├── description/
+│   │   ├── Description.js      # Présentation (photo, bio terminal, indicateur scroll)
+│   │   └── description.css
+│   ├── scrollreveal/
+│   │   ├── ScrollReveal.js     # Composant générique d'animation au scroll
+│   │   └── ScrollReveal.css
+│   ├── contact/
+│   │   ├── Contact.js
+│   │   └── contact.css
 │   ├── formations/
 │   │   └── formation.js        # Parcours scolaire
 │   ├── experiences/
@@ -133,7 +137,7 @@ Ouvre [http://localhost:3000](http://localhost:3000) — l'application se rechar
 
 Le projet appelle deux services externes qu'il faut reconfigurer si vous forkez ce dépôt :
 
-- **Formulaire de contact** (`src/Contact.js`) : utilise Formspree avec l'ID de formulaire `xgvyyabv`. Remplacez-le par votre propre ID Formspree ([créer un formulaire](https://formspree.io/)).
+- **Formulaire de contact** (`src/contact/Contact.js`) : utilise Formspree avec l'ID de formulaire `xgvyyabv`. Remplacez-le par votre propre ID Formspree ([créer un formulaire](https://formspree.io/)).
 - **Compteur de visiteurs** (`src/Stats/stats.js`) : appelle `https://visitor-notifier.onrender.com/visit`, un petit backend Node.js/Render dédié qui enregistre les sessions et renvoie le rang du visiteur ainsi que le total. Remplacez `API_URL` par votre propre service si besoin.
 
 Aucune variable d'environnement n'est requise pour lancer le projet en local (`npm start` fonctionne tel quel).
