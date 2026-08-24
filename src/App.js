@@ -13,9 +13,13 @@ import Contact from './Contact';
 import ScrollReveal from './ScrollReveal';
 import './App.css';
 
+const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';
+const HERO_VIDEO_NIGHT = 'https://videos.pexels.com/video-files/35677222/15118998_1920_1080_60fps.mp4';
+
 function App() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleScroll = useCallback(() => {
     setShowTopBtn(window.scrollY > 500);
@@ -25,6 +29,10 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode-body', darkMode);
+  }, [darkMode]);
 
   // Le navigateur restaure parfois la position de scroll d'une visite
   // précédente (ex: après un rechargement) : on force toujours l'ouverture
@@ -40,20 +48,30 @@ function App() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className="App">
+    <div className={`App${darkMode ? ' dark-mode' : ''}`}>
       {showWelcome && <WelcomePopup onClose={() => setShowWelcome(false)} />}
 
       <main>
         <section id="accueil" className="cv-section section-accueil">
           <video
+            key={darkMode ? 'night' : 'day'}
             className="hero-video-bg"
-            src="https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4"
+            src={darkMode ? HERO_VIDEO_NIGHT : HERO_VIDEO_DAY}
             autoPlay
             loop
             muted
             playsInline
             aria-hidden="true"
           />
+          <button
+            type="button"
+            className="dark-mode-toggle"
+            onClick={() => setDarkMode((v) => !v)}
+            aria-label={darkMode ? 'Désactiver le mode nuit' : 'Activer le mode nuit'}
+            title={darkMode ? 'Désactiver le mode nuit' : 'Activer le mode nuit'}
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
           <div className="section-inner hero-section">
             <div className="hero-content-box">
               <ScrollReveal direction="fade">
@@ -63,7 +81,7 @@ function App() {
                 </p>
               </ScrollReveal>
               <ScrollReveal direction="up" delay={150}>
-                <Description />
+                <Description darkMode={darkMode} />
               </ScrollReveal>
             </div>
           </div>

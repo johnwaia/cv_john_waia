@@ -32,6 +32,7 @@ main {
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh; /* évite les soucis de barre d'adresse mobile */
+  transition: filter 0.4s ease;
   padding: 3.5rem 0;
   display: flex;
   flex-direction: column;
@@ -71,6 +72,30 @@ main {
 .section-accueil .hero-section {
   position: relative;
   z-index: 1;
+}
+
+.dark-mode-toggle {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: translateY(-2px);
 }
 
 .hero-content-box {
@@ -181,6 +206,37 @@ main {
 
 .scroll-top-btn:hover {
   transform: translateY(-3px);
+}
+
+/* ---------- Mode nuit ---------- */
+/* La quasi-totalité du contenu du site est stylée en dur (couleurs claires,
+   fonds blancs) directement dans les composants. Plutôt que de réécrire
+   chaque composant pour supporter un thème, on assombrit chaque section par
+   un filtre d'inversion des couleurs (fonds clairs -> sombres, texte sombre
+   -> clair), avec les images/vidéos/logos contre-inversés pour garder leurs
+   couleurs d'origine. Accueil (déjà géré via la vidéo de nuit dédiée) et
+   Contact (déjà en thème sombre en permanence) sont exclus. */
+.App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) {
+  filter: invert(1) hue-rotate(180deg);
+  background: #f7f9fc;
+}
+
+.App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) img,
+.App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) video,
+.App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) iframe,
+.App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) .skill-icon-box {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* .skill-icon-box est déjà contre-inversée ci-dessus (pour garder son fond
+   blanc) : son icône ne doit donc pas l'être une deuxième fois, sinon elle
+   redevient invisible sur son propre fond. */
+.App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) .skill-icon-box img {
+  filter: none;
+}
+
+body.dark-mode-body {
+  background: #0b1220;
 }
 
 /* ---------- Responsive ---------- */

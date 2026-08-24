@@ -23,6 +23,7 @@ export default function Skills() {
             delay={(index % 10) * 60}
           >
             <div
+              className="skill-icon-box"
               style={{
                 width: '44px',
                 height: '44px',

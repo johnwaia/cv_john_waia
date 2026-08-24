@@ -108,7 +108,21 @@ const scrollToFormation = () => {
   document.getElementById('formation')?.scrollIntoView({ behavior: 'smooth' });
 };
 
-const Description = () => {
+function IncognitoIcon() {
+  return (
+    <svg viewBox="0 0 100 100" width="76" height="76" role="img" aria-label="Navigation privée">
+      <path d="M18 48 Q50 16 82 48 L82 53 L18 53 Z" fill="#f1f5f9" />
+      <rect x="10" y="47" width="80" height="9" rx="4.5" fill="#f1f5f9" />
+      <circle cx="50" cy="64" r="27" fill="#f1f5f9" />
+      <circle cx="38" cy="62" r="10.5" fill="#111827" />
+      <circle cx="62" cy="62" r="10.5" fill="#111827" />
+      <rect x="45.5" y="59.5" width="9" height="5" fill="#111827" />
+      <path d="M41 78 Q50 84 59 78" stroke="#111827" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+const Description = ({ darkMode }) => {
   return (
     <div
       style={{
@@ -135,19 +149,38 @@ const Description = () => {
           maxWidth: '800px',
         }}
       >
-        <img
-          src={johnWaiaPhoto}
-          alt="John Waïa"
-          style={{
-            width: '140px',
-            height: '140px',
-            borderRadius: '50%',
-            objectFit: 'cover',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-            border: '3px solid #fff',
-            flexShrink: 0,
-          }}
-        />
+        {darkMode ? (
+          <div
+            style={{
+              width: '140px',
+              height: '140px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: '#0f172a',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+              border: '3px solid #fff',
+              flexShrink: 0,
+            }}
+          >
+            <IncognitoIcon />
+          </div>
+        ) : (
+          <img
+            src={johnWaiaPhoto}
+            alt="John Waïa"
+            style={{
+              width: '140px',
+              height: '140px',
+              borderRadius: '50%',
+              objectFit: 'cover',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+              border: '3px solid #fff',
+              flexShrink: 0,
+            }}
+          />
+        )}
         <div style={{ flex: 1, minWidth: '250px' }}>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/9/91/Logo_Efrei_2022.svg"
