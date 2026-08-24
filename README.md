@@ -1,7 +1,7 @@
 # CV John Waïa
 
 CV en ligne interactif de **John Waïa**, développeur Full Stack Junior — construit avec React.
-Le site se présente comme un enchaînement de sections plein écran empilées ("effet feuilles"), chacune dédiée à une facette du profil : présentation, formation, expériences, compétences, soft skills, centres d'intérêt, projets, statistiques de visite et contact.
+Le site se présente comme un enchaînement de sections plein écran, chacune dédiée à une facette du profil : présentation, formation, expériences, compétences, soft skills, centres d'intérêt, projets, statistiques de visite et contact.
 
 🔗 **Démo en ligne :** [johnwaia.github.io/cv_john_waia](https://johnwaia.github.io/cv_john_waia)
 
@@ -21,13 +21,13 @@ Le site se présente comme un enchaînement de sections plein écran empilées (
 
 ## Aperçu
 
-Le CV s'organise en une page unique (`/`) découpée en sections `100vh`, empilées en `position: sticky` : chaque nouvelle section glisse par-dessus la précédente au fil du scroll, façon jeu de cartes. Une bulle de bienvenue s'affiche à l'ouverture, et un bouton "retour en haut" apparaît après un certain scroll.
+Le CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'enchaînent dans un défilement classique et continu. Une bulle de bienvenue s'affiche à l'ouverture, un bouton "mode nuit" permet de basculer le thème (et la vidéo de fond) de la section d'accueil, et un bouton "retour en haut" apparaît après un certain scroll.
 
 | Section | Contenu |
 |---|---|
-| 🏠 Accueil | Vidéo de fond (lagon), photo, présentation animée façon terminal de code, indicateur de scroll |
+| 🏠 Accueil | Vidéo de fond (lagon, jour/nuit), photo, présentation animée façon terminal de code, indicateur de scroll, bascule mode nuit |
 | 🎓 Formation | Parcours scolaire (Licence Informatique, BTS Bâtiment, Bac STI2D…) par onglets |
-| 💼 Expériences | Historique professionnel filtrable par catégorie (Informatique, Restauration, Intérim…), cartes retournables avec logo entreprise |
+| 💼 Expériences | Historique professionnel filtrable par catégorie (Informatique, Restauration, Intérim, Bénévolat…), cartes retournables avec logo entreprise |
 | 🛠️ Compétences | Compétences techniques par domaine (Informatique / Bâtiment / Bureautique), classées par catégories (langages, frameworks, outils, déploiement, tests, méthodes agiles, réseaux…) |
 | 🌟 Soft Skills | Grille de qualités humaines illustrées |
 | 🎯 Centres d'intérêt | Loisirs et passions |
@@ -37,11 +37,12 @@ Le CV s'organise en une page unique (`/`) découpée en sections `100vh`, empil�
 
 ## Fonctionnalités
 
-- **Mise en page "stacked sheets"** : sections plein écran en `position: sticky`, avec défilement interne autonome pour les sections au contenu plus long qu'un écran.
+- **Sections plein écran en défilement continu** : chaque section (`.cv-section`) occupe au moins un écran et s'enchaîne normalement dans le flux de la page (pas d'empilement `sticky`, pour un scroll fiable au trackpad et au tactile).
+- **Mode nuit** : bouton bascule sur la section d'accueil qui change la vidéo de fond (jour/nuit) et applique un thème sombre à l'ensemble du site.
 - **Animations au scroll** : apparition progressive des éléments via `IntersectionObserver` (`ScrollReveal`), effet "distribution de cartes" sur les onglets.
 - **Bio façon terminal** : la présentation est "tapée" caractère par caractère dans un faux terminal (`whoami`, `cat bio.txt`, `cat formation.txt`).
 - **Vidéo de fond** en boucle sur la section d'accueil, contenu regroupé dans une carte opaque pour rester lisible.
-- **Onglets réutilisables** (`ProjetTabs`, formation, compétences, expériences) avec réinitialisation du scroll interne à chaque changement d'onglet.
+- **Onglets réutilisables** (`ProjetTabs`, formation, compétences, expériences) avec effet de distribution de cartes à chaque changement d'onglet.
 - **Cartes d'expérience retournables** (recto : poste/dates, verso : détails des missions).
 - **Filtrage par catégorie** des expériences professionnelles.
 - **Compteur de visiteurs** avec appel à une API externe (rang du visiteur, total, session persistée en `sessionStorage`).
@@ -64,14 +65,13 @@ Le CV s'organise en une page unique (`/`) découpée en sections `100vh`, empil�
 cv_john_waia/
 ├── public/                     # index.html, favicon, manifest, logo
 ├── src/
-│   ├── App.js / App.css        # Orchestration des sections, layout "stacked sheets"
+│   ├── App.js / App.css        # Orchestration des sections, mode nuit
 │   ├── index.js                # Point d'entrée React
 │   ├── WelcomePopup.js         # Bulle de bienvenue à l'ouverture
 │   ├── Description.js          # Présentation (photo, bio terminal, indicateur scroll)
 │   ├── description.css
 │   ├── ScrollReveal.js         # Composant générique d'animation au scroll
 │   ├── ScrollReveal.css
-│   ├── scrollWithinSection.js  # Utilitaire : scroll confiné à une section (évite les fuites vers la fenêtre)
 │   ├── cardTabs.css            # Styles partagés des onglets "façon carte"
 │   ├── Contact.js / contact.css
 │   ├── formations/
@@ -151,9 +151,8 @@ Cette commande exécute `npm run build` (via `predeploy`) puis publie le contenu
 
 ## Détails d'architecture
 
-- **Sections empilées** : chaque section (`.cv-section`) occupe `100vh`/`100dvh`, reste collée en haut (`position: sticky`) et possède un `z-index` croissant, donnant l'illusion de feuilles qui se recouvrent au scroll. Quand le contenu d'une section dépasse un écran, elle défile en interne (`overflow-y: auto`) plutôt que de faire défiler toute la page.
-- **Réinitialisation du scroll interne** : `App.js` surveille quelle section est active et remet à zéro le défilement interne de la section quittée, pour éviter de "réapparaître" au milieu du contenu en y revenant.
-- **`scrollWithinSection.js`** : utilitaire dédié pour ramener un élément dans la zone visible d'une section sans jamais faire défiler la fenêtre globale (contrairement à `scrollIntoView`, qui peut faire "remonter" la section suivante par-dessus le contenu à cause de l'empilement `sticky`).
+- **Sections en flux normal** : chaque section (`.cv-section`) occupe au moins `100vh`/`100dvh` et s'enchaîne dans le flux de page classique. Un empilement `position: sticky` ("effet feuilles") a été essayé puis retiré : combiné à un scroll interne par section, il rendait le défilement continu (trackpad, tactile, certaines souris) imprévisible, avec des sauts vers la section suivante en plein milieu du contenu.
+- **Mode nuit** : `darkMode` (état dans `App.js`) bascule une classe `dark-mode` sur le conteneur racine et `dark-mode-body` sur `<body>`, change la vidéo de fond de la section d'accueil (`HERO_VIDEO_DAY` / `HERO_VIDEO_NIGHT`) et adapte les styles (`App.css`) sur l'ensemble du site.
 - **Compétences en colonnes** : la section Compétences utilise une mise en page CSS multi-colonnes (`columns`) pour que toutes les catégories tiennent sur un seul écran sans défilement interne.
 - **Vidéo de fond** : lecture en boucle, coupée (`muted`) et `playsInline` pour l'autoplay cross-navigateur ; le contenu textuel est regroupé dans une carte opaque pour rester lisible par-dessus la vidéo.
 

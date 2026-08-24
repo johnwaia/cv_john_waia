@@ -220,11 +220,23 @@ const experiencesData = [
       "Respect strict des règles d'hygiène et de sécurité alimentaire (HACCP)",
     ],
     logo: LogoMcdo,
-}
+  },
+  {
+    title: "Mentor bénévole – AFEV",
+    start: "2025-10",
+    end: "2026-07",
+    category: "Bénévolat",
+    details: [
+      "Accompagnement et mentorat individuel d'un jeune dans son parcours scolaire",
+      "Engagement étudiant solidaire au sein de l'Association de la Fondation Étudiante pour la Ville",
+      "Actions de soutien à la réussite éducative et à l'ouverture culturelle",
+    ],
+    logo: "https://upload.wikimedia.org/wikipedia/fr/7/72/Logo_AFEV.jpg",
+  }
 
 ];
 
-const categories = [ "Restauration", "Animation", "Grande Distribution", "Informatique","Construction","Intérim (Logistique Pro Service)"];
+const categories = [ "Restauration", "Animation", "Grande Distribution", "Informatique","Construction","Intérim (Logistique Pro Service)","Bénévolat"];
 
 export default function Experiences() {
 const [activeCategory, setActiveCategory] = useState("Informatique");
