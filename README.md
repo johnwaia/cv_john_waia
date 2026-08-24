@@ -157,10 +157,9 @@ Cette commande exécute `npm run build` (via `predeploy`) puis publie le contenu
 
 ## Licence
 
-Projet personnel — tous droits réservés. Le code peut être consulté à titre d'exemple, mais le contenu (textes, photos, CV) est spécifique à John Waïa.
+Projet personnel — tous droits réservés. Le code peut être consulté à titre d'exemple, mais le contenu (textes, photos, CV) est spécifique à MOI.
 
 ## Contact
 
-- **Email :** [johnwaia25@gmail.com](mailto:johnwaia25@gmail.com)
 - **GitHub :** [@johnwaia](https://github.com/johnwaia)
 - **LinkedIn :** [john-waïa](https://www.linkedin.com/in/john-wa%C3%AFa-314251218/)
