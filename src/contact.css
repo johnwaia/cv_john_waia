@@ -1,0 +1,211 @@
+.footer-contact {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f1f5f9;
+  padding: 3.5rem 1.5rem 3rem;
+  width: 100%;
+}
+
+.contact-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-grid h2 {
+  font-size: 1.7rem;
+  margin: 0 0 1.5rem;
+  color: #fff;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.contact-grid h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #4a90e2, #9013fe);
+}
+
+.contact-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+.contact-item strong {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.contact-item a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+.social-icons {
+  gap: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-icon-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.social-icon-link img {
+  width: 20px;
+  height: 20px;
+}
+
+.vertical-separator {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  align-self: stretch;
+}
+
+.footer-message h4 {
+  font-size: 1.2rem;
+  margin: 0 0 1.4rem;
+  color: #fff;
+}
+
+.footer-message form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 440px;
+}
+
+.footer-message label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-top: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.footer-message input,
+.footer-message textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  color: #f1f5f9;
+  font-family: inherit;
+  font-size: 0.92rem;
+  resize: vertical;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-message input::placeholder,
+.footer-message textarea::placeholder {
+  color: #64748b;
+}
+
+.footer-message input:focus,
+.footer-message textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
+}
+
+.footer-message form div[role='alert'],
+.footer-message form span[role='alert'],
+.footer-message form p[role='alert'] {
+  color: #f87171;
+  font-size: 0.78rem;
+  margin: 0.1rem 0 0;
+}
+
+.footer-message button[type='submit'] {
+  margin-top: 1.2rem;
+  align-self: flex-start;
+  background: linear-gradient(90deg, #4a90e2, #9013fe);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 14px rgba(74, 144, 226, 0.35);
+}
+
+.footer-message button[type='submit']:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.45);
+}
+
+.footer-message button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.success-container {
+  text-align: center;
+}
+
+.success-msg {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4ade80;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .footer-contact {
+    padding: 2.75rem 1.25rem 2.5rem;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .vertical-separator {
+    display: none;
+  }
+
+  .footer-message form {
+    max-width: 100%;
+  }
+
+  .footer-message button[type='submit'] {
+    align-self: stretch;
+    text-align: center;
+  }
+}

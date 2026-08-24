@@ -1,5 +1,6 @@
 // FormationTabs.js
 import React, { useState,useEffect  } from "react";
+import '../cardTabs.css';
 
 const formationsData = [
   {
@@ -74,14 +75,8 @@ function FormationTabs() {
       <nav
         role="tablist"
         aria-label="Formations"
-        style={{
-          display: "flex",
-          gap: 10,
-          marginBottom: 20,
-          flexWrap: "wrap",
-          borderBottom: "2px solid #ddd",
-          justifyContent: "center",
-        }}
+        className="card-tabs-nav flat"
+        style={{ marginBottom: 20 }}
       >
         {formationsData.map(({ title }, i) => (
           <button
@@ -91,19 +86,8 @@ function FormationTabs() {
             aria-controls={`formation-panel-${i}`}
             id={`formation-tab-${i}`}
             onClick={() => setActiveIndex(i)}
-            style={{
-              padding: "10px 20px",
-              cursor: "pointer",
-              backgroundColor: i === activeIndex ? "#007bff" : "transparent",
-              color: i === activeIndex ? "#fff" : "#007bff",
-              border: "none",
-              borderBottom: i === activeIndex ? "4px solid #0056b3" : "4px solid transparent",
-              borderRadius: "4px 4px 0 0",
-              fontWeight: i === activeIndex ? "700" : "500",
-              transition: "all 0.3s ease",
-              minWidth: 180,
-              textAlign: "center",
-            }}
+            className={`card-tab-btn ${i === activeIndex ? 'active' : ''}`}
+            style={{ minWidth: 180, textAlign: 'center' }}
           >
             {title}
           </button>
@@ -114,9 +98,11 @@ function FormationTabs() {
         id={`formation-panel-${activeIndex}`}
         role="tabpanel"
         aria-labelledby={`formation-tab-${activeIndex}`}
+        key={activeIndex}
+        className="card-tab-panel"
         style={{
           display: "flex",
-          flexDirection: "column", // par défaut empile verticalement (mobile)
+          flexDirection: "column",
           gap: 20,
           alignItems: "center",
         }}

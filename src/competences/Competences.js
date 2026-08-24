@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import ScrollReveal from '../ScrollReveal';
+import '../cardTabs.css';
 import './competences.css';
 
 export default function Skills() {
@@ -8,23 +10,26 @@ export default function Skills() {
     <div className="skill-section">
       <h4>{title}</h4>
       <div className="skill-grid">
-        {items.map(({ name, icon, url, custom }) => (
-          <a
+        {items.map(({ name, icon, url, custom }, index) => (
+          <ScrollReveal
+            as="a"
             key={name}
             href={url}
             target="_blank"
             rel="noopener noreferrer"
             className="skill-item"
             title={name}
+            direction="up"
+            delay={(index % 10) * 60}
           >
             <div
               style={{
-                width: '60px',
-                height: '60px',
+                width: '44px',
+                height: '44px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '5px',
+                padding: '4px',
                 backgroundColor: '#fff',
                 borderRadius: '8px',
                 boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
@@ -44,8 +49,8 @@ export default function Skills() {
                 }}
               />
             </div>
-            <span style={{ marginTop: '8px', textAlign: 'center' }}>{name}</span>
-          </a>
+            <span style={{ marginTop: '4px', textAlign: 'center' }}>{name}</span>
+          </ScrollReveal>
         ))}
       </div>
     </div>
@@ -53,7 +58,7 @@ export default function Skills() {
 
 
   const informatiqueSkills = (
-    <>
+    <div className="skills-columns">
       <Section title="Langages" items={[
         { name: 'Python', icon: 'python/python-original.svg', url: 'https://www.python.org/' },
         { name: 'HTML5', icon: 'html5/html5-original.svg', url: 'https://developer.mozilla.org/fr/docs/Web/HTML' },
@@ -88,8 +93,50 @@ export default function Skills() {
         { name: 'Debian', icon: 'debian/debian-original.svg', url: 'https://www.debian.org/' },
         { name: 'Windows', icon: 'windows8/windows8-original.svg', url: 'https://www.microsoft.com/windows' }
       ]} />
+      <Section title="Méthodes & gestion de projet" items={[
+        {
+          name: 'Open Project',
+          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openproject.svg',
+          url: 'https://www.openproject.org/',
+          custom: true,
+        },
+        {
+          name: 'Redmine',
+          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redmine.svg',
+          url: 'https://www.redmine.org/',
+          custom: true,
+        },
+        {
+          name: 'Méthode Agile (SCRUM)',
+          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/scrumalliance.svg',
+          url: 'https://www.scrumalliance.org/',
+          custom: true,
+        },
+      ]} />
+      <Section title="Déploiement" items={[
+        { name: 'AWS', icon: 'amazonwebservices/amazonwebservices-original-wordmark.svg', url: 'https://aws.amazon.com/' },
+        { name: 'Azure', icon: 'azure/azure-original.svg', url: 'https://azure.microsoft.com/' },
+      ]} />
+      <Section title="Tests" items={[
+        { name: 'Jest', icon: 'jest/jest-plain.svg', url: 'https://jestjs.io/' },
+        { name: 'Cypress', icon: 'cypressio/cypressio-original.svg', url: 'https://www.cypress.io/' },
+      ]} />
+      <Section title="Documentation" items={[
+        { name: 'Swagger', icon: 'swagger/swagger-original.svg', url: 'https://swagger.io/' },
+      ]} />
+      <Section title="Rédaction de rapport" items={[
+        { name: 'LaTeX', icon: 'latex/latex-original.svg', url: 'https://www.latex-project.org/' },
+      ]} />
+      <Section title="Réseaux" items={[
+        {
+          name: 'Cisco Packet Tracer',
+          icon: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/cisco.svg',
+          url: 'https://www.netacad.com/courses/packet-tracer',
+          custom: true,
+        },
+      ]} />
 
-    </>
+    </div>
   );
 
   const batimentSkills = (
@@ -153,28 +200,28 @@ export default function Skills() {
 
   return (
     <div className="skills">
-      <div className="tabs">
+      <div className="card-tabs-nav">
         <button
-          className={activeTab === 'informatique' ? 'active' : ''}
+          className={`card-tab-btn ${activeTab === 'informatique' ? 'active' : ''}`}
           onClick={() => setActiveTab('informatique')}
         >
           Informatique
         </button>
         <button
-          className={activeTab === 'batiment' ? 'active' : ''}
+          className={`card-tab-btn ${activeTab === 'batiment' ? 'active' : ''}`}
           onClick={() => setActiveTab('batiment')}
         >
           Bâtiment
         </button>
         <button
-          className={activeTab === 'bureautique' ? 'active' : ''}
+          className={`card-tab-btn ${activeTab === 'bureautique' ? 'active' : ''}`}
           onClick={() => setActiveTab('bureautique')}
         >
           Bureautique
         </button>
       </div>
 
-      <div className="tab-content">
+      <div className="card-tab-panel" key={activeTab}>
         {activeTab === 'informatique'
           ? informatiqueSkills
           : activeTab === 'batiment'

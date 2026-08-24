@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import './contact.css';
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("xgvyyabv"); // Remplace "xgvyyabv" par ton propre ID Formspree
@@ -12,30 +13,34 @@ const Contact = () => {
           <div className="contact-item">
             📞 <strong>Téléphone :</strong> +687 78 59 52
           </div>
-          <div className="contact-item">
-            📍 <strong>Adresse :</strong> Paris
-          </div>
-          <div className="contact-item">
-            🎂 <strong>Âge :</strong> 24 ans
-          </div>
-          <div className="contact-item">
-            📧 <strong>Email :</strong>{' '}
-            <a href="mailto:johnwaia25@gmail.com">johnwaia25@gmail.com</a>
-          </div>
-          <div className="contact-item">
-            💻 <strong>GitHub :</strong>{' '}
-            <a href="https://github.com/johnwaia" target="_blank" rel="noopener noreferrer">
-              johnwaia
+          <div className="contact-item social-icons">
+            <a
+              href="https://github.com/johnwaia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              className="social-icon-link"
+            >
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub" />
             </a>
-          </div>
-          <div className="contact-item">
-            🔗 <strong>LinkedIn :</strong>{' '}
             <a
               href="https://www.linkedin.com/in/john-wa%C3%AFa-314251218/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              title="LinkedIn"
+              className="social-icon-link"
             >
-              john-waia
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" alt="LinkedIn" />
+            </a>
+            <a
+              href="mailto:johnwaia25@gmail.com"
+              aria-label="Gmail"
+              title="johnwaia25@gmail.com"
+              className="social-icon-link"
+            >
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg" alt="Gmail" />
             </a>
           </div>
         </div>

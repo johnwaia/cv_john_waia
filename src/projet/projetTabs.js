@@ -1,30 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import '../cardTabs.css';
+import scrollWithinSection from '../scrollWithinSection';
 
 function ProjetTabs({ tabs, renderContent }) {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  const containerRef = useRef(null);
+  const isFirstRender = useRef(true);
+
+  // Quand on change d'onglet, on ramène le haut de ce bloc dans la zone visible
+  // du panneau qui défile (la section CV), pour éviter de rester "perdu" plus bas
+  // dans un scroll interne alors que le contenu affiché a changé.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    scrollWithinSection(containerRef.current);
+  }, [selectedTab]);
 
   return (
-    <div style={{ marginTop: '2rem' }}>
-      <ul style={{ display: 'flex', gap: '1rem', padding: 0, listStyle: 'none', borderBottom: '2px solid #007BFF' }}>
+    <div ref={containerRef} style={{ marginTop: '2rem' }}>
+      <div className="card-tabs-nav">
         {tabs.map(tab => (
-          <li key={tab}>
-            <button
-              onClick={() => setSelectedTab(tab)}
-              style={{
-                background: selectedTab === tab ? '#007BFF' : 'transparent',
-                color: selectedTab === tab ? 'white' : '#007BFF',
-                border: 'none',
-                padding: '0.5rem 1rem',
-                cursor: 'pointer',
-                borderBottom: selectedTab === tab ? '4px solid #0056b3' : 'none'
-              }}
-            >
-              {tab}
-            </button>
-          </li>
+          <button
+            key={tab}
+            className={`card-tab-btn ${selectedTab === tab ? 'active' : ''}`}
+            onClick={() => setSelectedTab(tab)}
+          >
+            {tab}
+          </button>
         ))}
-      </ul>
-      <div style={{ marginTop: '1.5rem', lineHeight: '1.8' }}>
+      </div>
+      <div className="card-tab-panel" key={selectedTab} style={{ lineHeight: '1.8' }}>
         {renderContent(selectedTab)}
       </div>
     </div>

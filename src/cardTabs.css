@@ -1,0 +1,124 @@
+/* cardTabs.css — onglets façon "jeu de cartes" */
+
+.card-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.card-tab-btn {
+  position: relative;
+  cursor: pointer;
+  padding: 0.85rem 1.3rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: #fff;
+  border: 2px solid #e2e2e2;
+  border-bottom: none;
+  border-radius: 14px 14px 0 0;
+  margin: 0 -10px;
+  color: #555;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease;
+  transform-origin: bottom center;
+}
+
+.card-tab-btn:first-child {
+  margin-left: 0;
+}
+.card-tab-btn:last-child {
+  margin-right: 0;
+}
+
+/* Effet éventail : rotation alternée */
+.card-tabs-nav:not(.flat) .card-tab-btn:nth-child(odd) {
+  transform: rotate(-3deg) translateY(6px);
+}
+.card-tabs-nav:not(.flat) .card-tab-btn:nth-child(even) {
+  transform: rotate(3deg) translateY(6px);
+}
+
+.card-tab-btn:hover {
+  transform: translateY(-6px) rotate(0deg);
+  z-index: 5;
+  color: #0070f3;
+}
+
+.card-tab-btn.active {
+  transform: translateY(-10px) rotate(0deg) scale(1.05);
+  z-index: 10;
+  box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.15);
+  border-color: #0070f3;
+  color: #0070f3;
+}
+
+/* Variante "à plat" pour les libellés longs (pas d'éventail, juste un soulèvement) */
+.card-tabs-nav.flat .card-tab-btn {
+  transform: none;
+  margin: 0 -6px;
+}
+.card-tabs-nav.flat .card-tab-btn:hover {
+  transform: translateY(-4px);
+}
+.card-tabs-nav.flat .card-tab-btn.active {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Le contenu de l'onglet actif = une carte posée sur la table, distribuée à chaque changement */
+.card-tab-panel {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+  border: 1px solid #eee;
+  padding: 1.25rem;
+  animation: dealCard 0.45s ease;
+}
+
+/* Version sans habillage "carte" — juste l'animation de distribution,
+   utile quand le contenu a déjà son propre style (ex: grille de cartes) */
+.card-deck-refresh {
+  animation: dealCard 0.45s ease;
+}
+
+@keyframes dealCard {
+  from {
+    opacity: 0;
+    transform: translateY(26px) rotate(-2deg) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-tab-panel {
+    animation: none;
+  }
+  .card-tab-btn,
+  .card-tab-btn:hover,
+  .card-tab-btn.active {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-tab-btn {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+    margin: 2px;
+  }
+  .card-tabs-nav:not(.flat) .card-tab-btn:nth-child(odd),
+  .card-tabs-nav:not(.flat) .card-tab-btn:nth-child(even) {
+    transform: none;
+  }
+  .card-tab-btn.active {
+    transform: translateY(-4px) scale(1.02);
+  }
+}

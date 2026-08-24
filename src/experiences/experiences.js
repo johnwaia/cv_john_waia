@@ -1,11 +1,14 @@
 // Experiences.js
 
 import './experience.css'; // optionnel si tu veux un style spécifique
+import '../cardTabs.css';
 import React, { useState } from 'react';
+import ScrollReveal from '../ScrollReveal';
 import Prepacommande from '../assets/PreparateurCommande.jpg';
 import LogoCellocal from '../assets/logoCellocal.jpg';
 import LogoScie from '../assets/LogoScie.png';
 import DumbeaMall from '../assets/Dumbea_mall.png';
+import LogoMcdo from '../assets/mcdo.png';
 
 const experiencesData = [
   {
@@ -205,7 +208,19 @@ const experiencesData = [
       "Regrouper les articles par catégorie pour faciliter le comptage ",
     ],
     logo: DumbeaMall,
-  }
+  },
+  {
+    title: "Employé Polyvalent – McDonald's",
+    start: "2025-07-28",
+    end: "2025-08-09",
+    category: "Restauration",
+    details: [
+      "Accueil et prise de commandes des clients au comptoir et en caisse",
+      "Préparation des produits selon les normes et procédures McDonald's",
+      "Respect strict des règles d'hygiène et de sécurité alimentaire (HACCP)",
+    ],
+    logo: LogoMcdo,
+}
 
 ];
 
@@ -221,21 +236,27 @@ const [activeCategory, setActiveCategory] = useState("Informatique");
 
   return (
     <div className="experiences">
-      <div className="tabs">
+      <div className="card-tabs-nav flat">
         {categories.map(cat => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`tab-button ${activeCategory === cat ? 'active' : ''}`}
+            className={`card-tab-btn ${activeCategory === cat ? 'active' : ''}`}
           >
             {cat}
           </button>
         ))}
       </div>
 
-      <ul className="experience-list">
+      <ul className="experience-list card-deck-refresh" key={activeCategory}>
         {filteredData.map(({ title, start, end, details, logo }, index) => (
-          <li key={index} className="experience-card">
+          <ScrollReveal
+            as="li"
+            key={index}
+            className="experience-card"
+            direction="up"
+            delay={(index % 6) * 90}
+          >
             <div className="card-inner">
               <div className="card-front">
                 {logo && (
@@ -258,7 +279,7 @@ const [activeCategory, setActiveCategory] = useState("Informatique");
                 </ul>
               </div>
             </div>
-          </li>
+          </ScrollReveal>
         ))}
       </ul>
     </div>

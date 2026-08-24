@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../cardTabs.css';
 
 export default function Interests() {
   const [interestTab, setInterestTab] = useState('boxe');
@@ -49,7 +50,7 @@ export default function Interests() {
   return (
     <div>
       {/* Boutons */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px', flexWrap: 'wrap' }}>
+      <div className="card-tabs-nav">
         {[
           { label: 'Boxe 🥊', value: 'boxe' },
           { label: 'Informatique 💻', value: 'info' },
@@ -59,14 +60,7 @@ export default function Interests() {
           <button
             key={value}
             onClick={() => setInterestTab(value)}
-            style={{
-              padding: '8px 14px',
-              border: '1px solid #ccc',
-              background: interestTab === value ? '#eee' : '#fff',
-              cursor: 'pointer',
-              borderRadius: '6px',
-              fontWeight: 'bold',
-            }}
+            className={`card-tab-btn ${interestTab === value ? 'active' : ''}`}
           >
             {label}
           </button>
@@ -74,6 +68,7 @@ export default function Interests() {
       </div>
 
       {/* Contenu selon l'onglet sélectionné */}
+      <div className="card-tab-panel" key={interestTab}>
       {interestTab === 'boxe' && (
         <div style={isMobile ? responsiveStyle : containerStyle}>
           <img
@@ -155,6 +150,7 @@ export default function Interests() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

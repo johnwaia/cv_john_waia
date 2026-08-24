@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import confetti from 'canvas-confetti';
 import obamaImage from '../assets/obamaImage.png';
 
 const API_URL = 'https://visitor-notifier.onrender.com/visit'; // 🔧 Mise à jour URL
@@ -25,14 +24,6 @@ const Stats = () => {
       .then(data => {
         setVisitorRank(data.rank);
         setTotalVisitors(data.totalVisitors);
-
-        if (data.isNewVisitor) {
-          confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 },
-          });
-        }
       })
       .catch(err => {
         console.error('Erreur lors de la récupération des stats visiteurs:', err);
