@@ -36,42 +36,6 @@ function App() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Chaque section (.cv-section) peut défiler dans son propre cadre quand son
-  // contenu dépasse un écran (ex: Compétences, Soft Skills, Projets). Ce scroll
-  // interne n'est jamais réinitialisé par le navigateur : si on quitte une
-  // section en ayant défilé dedans puis qu'on y revient plus tard, elle
-  // réapparaît coincée au milieu de son contenu au lieu de son en-tête — ce qui
-  // donne l'impression que le scroll de la page et celui de la section se
-  // mélangent. On remet donc à zéro le scroll d'une section dès qu'on la quitte.
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll('.cv-section'));
-    if (!sections.length) return undefined;
-
-    const getActiveSection = () => {
-      const y = window.scrollY;
-      let active = sections[0];
-      for (const section of sections) {
-        if (section.offsetTop <= y + 1) {
-          active = section;
-        }
-      }
-      return active;
-    };
-
-    let lastActiveId = getActiveSection().id;
-
-    const handleSectionScroll = () => {
-      const active = getActiveSection();
-      if (active.id !== lastActiveId) {
-        const previous = document.getElementById(lastActiveId);
-        if (previous) previous.scrollTop = 0;
-        lastActiveId = active.id;
-      }
-    };
-
-    window.addEventListener('scroll', handleSectionScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleSectionScroll);
-  }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 

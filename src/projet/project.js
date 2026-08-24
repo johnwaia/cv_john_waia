@@ -1,7 +1,6 @@
 // project.js
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import ProjetTabs from './projetTabs';
-import scrollWithinSection from '../scrollWithinSection';
 import commandeHelp from '../assets/CaptureProjetMoteurRecherche/commande_help.PNG';
 import commandeHist from '../assets/CaptureProjetMoteurRecherche/commande_hist.PNG';
 import EntreeCommande from '../assets/CaptureProjetMoteurRecherche/Entree_commande.PNG';
@@ -13,19 +12,6 @@ const Projets = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [ongletActif, setOngletActif] = useState('pédagogiques');
   const [selectedTab, setSelectedTab] = useState('Fonctions');
-  const containerRef = useRef(null);
-  const isFirstRender = useRef(true);
-
-  // Ramène le haut du bloc "Projets" dans la zone visible quand on change
-  // d'onglet, pour éviter de rester scrollé plus bas dans le contenu précédent
-  // (confusion entre le scroll de la page et celui du portfolio).
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-    scrollWithinSection(containerRef.current);
-  }, [ongletActif, selectedTab]);
 
   const imageStyle = {
     width: '100%',
@@ -756,7 +742,7 @@ const Projets = () => {
   };
 
   return (
-    <div ref={containerRef}>
+    <div>
       <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
         <button
           onClick={() => setOngletActif('pédagogiques')}

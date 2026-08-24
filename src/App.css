@@ -15,31 +15,27 @@ body {
 
 .App {
   min-height: 100vh;
-  overflow-x: clip; /* overflow-x: hidden casserait le position: sticky des sections */
+  overflow-x: clip;
 }
 
 main {
   width: 100%;
 }
 
-/* ---------- Sections empilées comme des feuilles ---------- */
-/* Chaque section reste collée en haut (sticky) et la suivante,
-   grâce à un z-index plus élevé, glisse par-dessus en la recouvrant. */
+/* ---------- Sections ---------- */
+/* Chaque section s'enchaîne normalement dans le flux de la page (défilement
+   classique et continu). L'empilement "feuilles" en position: sticky a été
+   retiré : avec un défilement interne par section, tout scroll continu
+   (trackpad, tactile, et même certaines souris) pouvait faire "sauter" au
+   milieu d'une section vers la section suivante de façon imprévisible. */
 .cv-section {
-  position: sticky;
-  top: 0;
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh; /* évite les soucis de barre d'adresse mobile */
-  max-height: 100vh;
-  max-height: 100dvh;
-  overflow-y: auto; /* si le contenu dépasse un écran, il défile à l'intérieur de sa propre page */
   padding: 3.5rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  justify-content: safe center; /* centre si possible, sans jamais cacher le haut du contenu */
-  box-shadow: 0 -18px 34px rgba(0, 0, 0, 0.22);
+  justify-content: center;
 }
 
 .section-inner {
@@ -55,11 +51,10 @@ main {
   text-align: center;
 }
 
-/* Each section gets its own tint + matching title accent,
-   et un z-index croissant pour l'empilement "feuilles" */
+/* Each section gets its own tint + matching title accent */
 .section-accueil {
   background: linear-gradient(180deg, #e8f2ff, #f7f9fc);
-  z-index: 1;
+  /* positionne la section pour ancrer la vidéo de fond (position: absolute) */
   position: relative;
 }
 
@@ -93,7 +88,6 @@ main {
 
 .section-formation {
   background: #fff4e6;
-  z-index: 2;
 }
 .section-formation .section-title {
   color: #c2660c;
@@ -101,7 +95,6 @@ main {
 
 .section-experiences {
   background: #edfaf0;
-  z-index: 3;
 }
 .section-experiences .section-title {
   color: #2b8a3e;
@@ -109,7 +102,6 @@ main {
 
 .section-competences {
   background: #f3edff;
-  z-index: 4;
 }
 .section-competences .section-title {
   color: #6741d9;
@@ -117,7 +109,6 @@ main {
 
 .section-softskills {
   background: #fff0f6;
-  z-index: 5;
 }
 .section-softskills .section-title {
   color: #c2255c;
@@ -125,7 +116,6 @@ main {
 
 .section-interets {
   background: #e6fcf5;
-  z-index: 6;
 }
 .section-interets .section-title {
   color: #099268;
@@ -133,7 +123,6 @@ main {
 
 .section-projets {
   background: #fef9e7;
-  z-index: 7;
 }
 .section-projets .section-title {
   color: #b8860b;
@@ -141,7 +130,6 @@ main {
 
 .section-stats {
   background: #eef2ff;
-  z-index: 8;
 }
 .section-stats .section-title {
   color: #4263eb;
@@ -149,7 +137,6 @@ main {
 
 .section-contact {
   background: #eef1f5;
-  z-index: 9;
 }
 
 /* ---------- Hero ---------- */
@@ -202,19 +189,9 @@ main {
     font-size: 2rem;
   }
 
-  /* L'empilement "feuilles" (sticky + défilement interne par section) est
-     peu fiable au toucher sur mobile : les sections se recouvrant à 100%
-     de l'écran, le navigateur peut rediriger un balayage en cours vers la
-     section suivante avant la fin de la précédente. Sous ce seuil, on
-     repasse donc à un défilement classique et continu, section après
-     section, sans sticky ni scroll interne. */
   .cv-section {
-    position: static;
     min-height: 0;
-    max-height: none;
-    overflow-y: visible;
     padding: 2.5rem 1rem;
-    box-shadow: none;
   }
 
   .hero-content-box {
