@@ -55,7 +55,6 @@ Le CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'e
 - **[React 18](https://react.dev/)** (bootstrapé avec [Create React App](https://github.com/facebook/create-react-app) / `react-scripts`)
 - **CSS** : feuilles de styles dédiées par composant (pas de framework CSS imposé ; Bootstrap et MDB UI Kit sont installés mais l'essentiel du style est du CSS/JS custom)
 - **[Formspree](https://formspree.io/)** (`@formspree/react`) pour le formulaire de contact
-- **[canvas-confetti](https://www.npmjs.com/package/canvas-confetti)**, **[three.js](https://threejs.org/)** / `@react-three/fiber` / `@react-three/drei`, **framer-motion**, **react-tsparticles** : dépendances disponibles pour effets visuels
 - **[gh-pages](https://www.npmjs.com/package/gh-pages)** pour le déploiement sur GitHub Pages
 - **Testing Library** (`@testing-library/*`) pour les tests
 
