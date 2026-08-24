@@ -1,6 +1,6 @@
 # CV John Waïa
 
-CV en ligne interactif de **John Waïa**, développeur Full Stack Junior — construit avec React.
+Mon CV en ligne interactif, développeur Full Stack Junior — construit avec React.
 Le site se présente comme un enchaînement de sections plein écran, chacune dédiée à une facette du profil : présentation, formation, expériences, compétences, soft skills, centres d'intérêt, projets, statistiques de visite et contact.
 
 🔗 **Démo en ligne :** [johnwaia.github.io/cv_john_waia](https://johnwaia.github.io/cv_john_waia)
