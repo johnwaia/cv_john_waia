@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import johnWaiaPhoto from '../assets/john_waia.jpeg';
+import incognitoIcon from '../assets/incognito.png';
 import './description.css';
 
 const terminalSteps = [
@@ -110,15 +111,13 @@ const scrollToFormation = () => {
 
 function IncognitoIcon() {
   return (
-    <svg viewBox="0 0 100 100" width="76" height="76" role="img" aria-label="Navigation privée">
-      <path d="M18 48 Q50 16 82 48 L82 53 L18 53 Z" fill="#f1f5f9" />
-      <rect x="10" y="47" width="80" height="9" rx="4.5" fill="#f1f5f9" />
-      <circle cx="50" cy="64" r="27" fill="#f1f5f9" />
-      <circle cx="38" cy="62" r="10.5" fill="#111827" />
-      <circle cx="62" cy="62" r="10.5" fill="#111827" />
-      <rect x="45.5" y="59.5" width="9" height="5" fill="#111827" />
-      <path d="M41 78 Q50 84 59 78" stroke="#111827" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-    </svg>
+    <img
+      src={incognitoIcon}
+      alt="Navigation privée"
+      width="76"
+      height="76"
+      style={{ display: 'block', borderRadius: '50%', objectFit: 'cover' }}
+    />
   );
 }
 
