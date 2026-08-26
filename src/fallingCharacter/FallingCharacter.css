@@ -2,9 +2,9 @@
   position: fixed;
   top: 0;
   left: clamp(0.25rem, 2.5vw, 2rem);
+  right: 0;
   height: 100vh;
   height: 100dvh;
-  width: 90px;
   pointer-events: none;
   z-index: 900;
   opacity: 0;
@@ -21,7 +21,6 @@
   left: 0;
   width: 90px;
   height: 190px;
-  transition: transform 0.05s linear;
   will-change: transform;
 }
 
@@ -56,8 +55,16 @@
   opacity: 1;
 }
 
+.falling-character.is-falling {
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.falling-character.is-falling.is-dragging {
+  cursor: grabbing;
+}
+
 @media (max-width: 640px) {
-  .falling-character-track,
   .falling-character {
     width: 68px;
   }
