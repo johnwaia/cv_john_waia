@@ -52,7 +52,7 @@
 
 .experience-card {
   width: 280px;
-  height: 200px;
+  height: 260px;
   perspective: 1000px; /* perspective pour le 3D */
   cursor: pointer;
 }
@@ -103,15 +103,35 @@
 
 .card-back {
   background: #ffffff;
-  color: white;
+  color: #333;
   transform: rotateY(180deg);
   overflow-y: auto;
+  justify-content: flex-start;
+  align-items: stretch;
+  scrollbar-width: thin;
+  scrollbar-color: #007acc transparent;
+}
+
+.card-back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-back::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-back::-webkit-scrollbar-thumb {
+  background: #007acc;
+  border-radius: 3px;
 }
 
 .card-back .details {
   padding-left: 1rem;
   text-align: left;
   margin: 0;
+  color: #333;
+  font-size: 0.88rem;
+  line-height: 1.4;
 }
 
 .card-back .details li {

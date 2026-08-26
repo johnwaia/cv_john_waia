@@ -203,9 +203,7 @@ const experiencesData = [
     details: [
       "Mise en rayon des fruits et légumes selon les consignes de présentation",
       "Vérification de la qualité et de la fraîcheur des produits",
-      "Vérifier la propreté de l’espace de travail.",
       "Retirer les fruits/légumes abîmés ou impropres à la vente.",
-      "Regrouper les articles par catégorie pour faciliter le comptage ",
     ],
     logo: DumbeaMall,
   },
