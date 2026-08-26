@@ -13,6 +13,7 @@ import Contact from './contact/Contact';
 import ScrollReveal from './scrollreveal/ScrollReveal';
 import FallingCharacter from './fallingCharacter/FallingCharacter';
 import QuickSummary from './quickSummary/QuickSummary';
+import cvPdf from './assets/CV_John WAIA_Emploi.pdf';
 import './App.css';
 
 const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';
@@ -112,6 +113,11 @@ function App() {
               </ScrollReveal>
               <ScrollReveal direction="up" delay={150}>
                 <Description darkMode={darkMode} />
+              </ScrollReveal>
+              <ScrollReveal direction="up" delay={250}>
+                <a href={cvPdf} download="CV_John_WAIA.pdf" className="cv-download-btn">
+                  📄 Télécharger le CV (PDF)
+                </a>
               </ScrollReveal>
             </div>
           </div>

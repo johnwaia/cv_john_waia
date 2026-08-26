@@ -179,6 +179,13 @@
   height: 24px;
 }
 
+.quick-summary-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .quick-summary-cta {
   border: none;
   background: #0070f3;
@@ -192,6 +199,25 @@
 
 .quick-summary-cta:hover {
   transform: translateY(-2px);
+}
+
+.quick-summary-download {
+  border: 2px solid #0070f3;
+  background: transparent;
+  color: #0070f3;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.quick-summary-download:hover {
+  transform: translateY(-2px);
+  background: #0070f3;
+  color: #fff;
 }
 
 @media (max-width: 640px) {

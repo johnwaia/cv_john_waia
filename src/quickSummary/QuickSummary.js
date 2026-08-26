@@ -1,5 +1,6 @@
 import React from 'react';
 import johnWaiaPhoto from '../assets/john_waia.jpeg';
+import cvPdf from '../assets/CV_John WAIA_Emploi.pdf';
 import './quickSummary.css';
 
 const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';
@@ -150,9 +151,18 @@ function QuickSummary({ onSwitchToFull, darkMode }) {
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg" alt="Email" />
               </a>
             </div>
-            <button type="button" className="quick-summary-cta" onClick={() => handleSwitchToFull()}>
-              Voir le CV complet →
-            </button>
+            <div className="quick-summary-actions">
+              <a
+                href={cvPdf}
+                download="CV_John_WAIA.pdf"
+                className="quick-summary-download"
+              >
+                📄 Télécharger le CV (PDF)
+              </a>
+              <button type="button" className="quick-summary-cta" onClick={() => handleSwitchToFull()}>
+                Voir le CV complet →
+              </button>
+            </div>
           </div>
         </div>
       </div>
