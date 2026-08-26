@@ -21,11 +21,11 @@ Le site se présente comme un enchaînement de sections plein écran, chacune d�
 
 ## Aperçu
 
-Le CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'enchaînent dans un défilement classique et continu. Une bulle de bienvenue s'affiche à l'ouverture, un bouton "mode nuit" permet de basculer le thème (et la vidéo de fond) de la section d'accueil, et un bouton "retour en haut" apparaît après un certain scroll.
+Mon CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'enchaînent dans un défilement classique et continu. Une bulle de bienvenue s'affiche à l'ouverture, un switch "mode nuit" permet de basculer le thème (et la vidéo de fond) de la section d'accueil, un bouton "retour en haut" apparaît après un certain scroll, et **Talo**, un petit personnage mascotte, dégringole le long de l'écran au fil du scroll à partir de la section Formation.
 
 | Section | Contenu |
 |---|---|
-| 🏠 Accueil | Vidéo de fond (lagon, jour/nuit), photo, présentation animée façon terminal de code, indicateur de scroll, bascule mode nuit |
+| 🏠 Accueil | Vidéo de fond (lagon, jour/nuit), carte de présentation translucide (effet verre dépoli), photo, présentation animée façon terminal de code, indicateur de scroll, switch mode nuit |
 | 🎓 Formation | Parcours scolaire (Licence Informatique, BTS Bâtiment, Bac STI2D…) par onglets |
 | 💼 Expériences | Historique professionnel filtrable par catégorie (Informatique, Restauration, Intérim, Bénévolat…), cartes retournables avec logo entreprise |
 | 🛠️ Compétences | Compétences techniques par domaine (Informatique / Bâtiment / Bureautique), classées par catégories (langages, frameworks, outils, déploiement, tests, méthodes agiles, réseaux…) |
@@ -38,10 +38,11 @@ Le CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'e
 ## Fonctionnalités
 
 - **Sections plein écran en défilement continu** : chaque section (`.cv-section`) occupe au moins un écran et s'enchaîne normalement dans le flux de la page (pas d'empilement `sticky`, pour un scroll fiable au trackpad et au tactile).
-- **Mode nuit** : bouton bascule sur la section d'accueil qui change la vidéo de fond (jour/nuit) et applique un thème sombre à l'ensemble du site.
+- **Talo, la mascotte qui chute au scroll** : fixé sur le bord gauche de l'écran, ce petit personnage reste debout tant qu'on n'a pas atteint la section Formation, puis tombe (et tournoie) au fur et à mesure du scroll jusqu'à la section Contact. Respecte `prefers-reduced-motion`.
+- **Mode nuit** : switch (interrupteur à glissière) sur la section d'accueil qui change la vidéo de fond (jour/nuit) et applique un thème sombre à l'ensemble du site.
 - **Animations au scroll** : apparition progressive des éléments via `IntersectionObserver` (`ScrollReveal`), effet "distribution de cartes" sur les onglets.
 - **Bio façon terminal** : la présentation est "tapée" caractère par caractère dans un faux terminal (`whoami`, `cat bio.txt`, `cat formation.txt`).
-- **Vidéo de fond** en boucle sur la section d'accueil, contenu regroupé dans une carte opaque pour rester lisible.
+- **Vidéo de fond** en boucle sur la section d'accueil, contenu regroupé dans une carte translucide (effet verre dépoli) pour rester lisible tout en laissant deviner la vidéo derrière.
 - **Onglets réutilisables** (`ProjetTabs`, formation, compétences, expériences) avec effet de distribution de cartes à chaque changement d'onglet.
 - **Cartes d'expérience retournables** (recto : poste/dates, verso : détails des missions).
 - **Filtrage par catégorie** des expériences professionnelles.
@@ -74,6 +75,9 @@ cv_john_waia/
 │   ├── scrollreveal/
 │   │   ├── ScrollReveal.js     # Composant générique d'animation au scroll
 │   │   └── ScrollReveal.css
+│   ├── fallingCharacter/
+│   │   ├── FallingCharacter.js # Talo, la mascotte qui chute au scroll
+│   │   └── FallingCharacter.css
 │   ├── contact/
 │   │   ├── Contact.js
 │   │   └── contact.css
@@ -157,7 +161,8 @@ Cette commande exécute `npm run build` (via `predeploy`) puis publie le contenu
 - **Sections en flux normal** : chaque section (`.cv-section`) occupe au moins `100vh`/`100dvh` et s'enchaîne dans le flux de page classique. Un empilement `position: sticky` ("effet feuilles") a été essayé puis retiré : combiné à un scroll interne par section, il rendait le défilement continu (trackpad, tactile, certaines souris) imprévisible, avec des sauts vers la section suivante en plein milieu du contenu.
 - **Mode nuit** : `darkMode` (état dans `App.js`) bascule une classe `dark-mode` sur le conteneur racine et `dark-mode-body` sur `<body>`, change la vidéo de fond de la section d'accueil (`HERO_VIDEO_DAY` / `HERO_VIDEO_NIGHT`) et adapte les styles (`App.css`) sur l'ensemble du site.
 - **Compétences en colonnes** : la section Compétences utilise une mise en page CSS multi-colonnes (`columns`) pour que toutes les catégories tiennent sur un seul écran sans défilement interne.
-- **Vidéo de fond** : lecture en boucle, coupée (`muted`) et `playsInline` pour l'autoplay cross-navigateur ; le contenu textuel est regroupé dans une carte opaque pour rester lisible par-dessus la vidéo.
+- **Vidéo de fond** : lecture en boucle, coupée (`muted`) et `playsInline` pour l'autoplay cross-navigateur ; le contenu textuel est regroupé dans une carte translucide (`backdrop-filter: blur`) pour rester lisible par-dessus la vidéo.
+- **Talo** : position calculée à chaque scroll (`FallingCharacter.js`) à partir de la progression entre le haut de la section `#formation` et le bas de la page ; le personnage est masqué avant ce point, affiché debout à l'arrivée sur Formation, puis bascule (crossfade) vers une illustration de chute avec un léger tournoiement au fil du scroll.
 
 ## Licence
 
