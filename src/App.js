@@ -11,6 +11,7 @@ import Projets from './projet/project';
 import Stats from './Stats/stats';
 import Contact from './contact/Contact';
 import ScrollReveal from './scrollreveal/ScrollReveal';
+import FallingCharacter from './fallingCharacter/FallingCharacter';
 import './App.css';
 
 const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';
@@ -34,9 +35,6 @@ function App() {
     document.body.classList.toggle('dark-mode-body', darkMode);
   }, [darkMode]);
 
-  // Le navigateur restaure parfois la position de scroll d'une visite
-  // précédente (ex: après un rechargement) : on force toujours l'ouverture
-  // sur la première section (Accueil / Description).
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
@@ -50,6 +48,8 @@ function App() {
   return (
     <div className={`App${darkMode ? ' dark-mode' : ''}`}>
       {showWelcome && <WelcomePopup onClose={() => setShowWelcome(false)} />}
+
+      <FallingCharacter />
 
       <main>
         <section id="accueil" className="cv-section section-accueil">

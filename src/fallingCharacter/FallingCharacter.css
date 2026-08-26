@@ -1,0 +1,76 @@
+.falling-character-track {
+  position: fixed;
+  top: 0;
+  left: clamp(0.25rem, 2.5vw, 2rem);
+  height: 100vh;
+  height: 100dvh;
+  width: 90px;
+  pointer-events: none;
+  z-index: 900;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.falling-character-track.is-visible {
+  opacity: 1;
+}
+
+.falling-character {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 190px;
+  transition: transform 0.05s linear;
+  will-change: transform;
+}
+
+.fc-figure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.35));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.fc-figure-standing {
+  width: 58px;
+  opacity: 1;
+}
+
+.fc-figure-falling {
+  width: 148px;
+}
+
+.falling-character.is-falling .fc-figure-standing {
+  opacity: 0;
+}
+
+.falling-character.is-falling .fc-figure-falling {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .falling-character-track,
+  .falling-character {
+    width: 68px;
+  }
+
+  .falling-character {
+    height: 140px;
+  }
+
+  .fc-figure-standing {
+    width: 42px;
+  }
+
+  .fc-figure-falling {
+    width: 108px;
+  }
+}
