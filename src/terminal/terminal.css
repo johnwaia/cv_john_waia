@@ -1,0 +1,143 @@
+/* terminal.css — terminal interactif du CV (section Contact) */
+
+.contact-terminal {
+  margin-top: 2rem;
+}
+
+.contact-terminal h4 {
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+  color: #fff;
+}
+
+.interactive-terminal {
+  width: 100%;
+  max-width: 420px;
+  background: #0b1220;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: text;
+}
+
+.interactive-terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  background: #1e293b;
+}
+
+.interactive-terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.interactive-terminal-dot.dot-red {
+  background: #ff5f56;
+}
+
+.interactive-terminal-dot.dot-yellow {
+  background: #ffbd2e;
+}
+
+.interactive-terminal-dot.dot-green {
+  background: #27c93f;
+}
+
+.interactive-terminal-title {
+  margin-left: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.72rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.interactive-terminal-body {
+  padding: 0.9rem 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.interactive-terminal-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.interactive-terminal-command {
+  color: #e2e8f0;
+}
+
+.interactive-terminal-output {
+  color: #93c5fd;
+  margin: 0 0 0.4rem;
+}
+
+.interactive-terminal-output a {
+  color: #4ade80;
+  text-decoration: underline;
+}
+
+.interactive-terminal-list {
+  margin: 0 0 0.6rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+  color: #93c5fd;
+}
+
+.interactive-terminal-list li {
+  margin-bottom: 0.15rem;
+}
+
+.interactive-terminal-list a {
+  color: #4ade80;
+  text-decoration: underline;
+}
+
+.interactive-terminal-list a:hover {
+  color: #86efac;
+}
+
+.interactive-terminal-prompt {
+  color: #4ade80;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.interactive-terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.interactive-terminal-input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: #e2e8f0;
+  font-family: inherit;
+  font-size: inherit;
+  caret-color: #4ade80;
+}
+
+.interactive-terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.interactive-terminal-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+@media (max-width: 800px) {
+  .interactive-terminal {
+    max-width: 100%;
+  }
+}

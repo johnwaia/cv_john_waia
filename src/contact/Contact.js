@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import InteractiveTerminal from '../terminal/InteractiveTerminal';
 import './contact.css';
 
 const Contact = () => {
@@ -39,6 +40,11 @@ const Contact = () => {
             >
               <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg" alt="Gmail" />
             </a>
+          </div>
+
+          <div className="contact-terminal">
+            <h4>Mode développeur 👨‍💻</h4>
+            <InteractiveTerminal />
           </div>
         </div>
 
