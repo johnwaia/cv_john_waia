@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/cv_john_waia/static/css/main.7fdbfaed.css",
-    "main.js": "/cv_john_waia/static/js/main.45a25802.js",
+    "main.css": "/cv_john_waia/static/css/main.a5cdb3a4.css",
+    "main.js": "/cv_john_waia/static/js/main.dc6dac5a.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "static/media/obamaImage.png": "/cv_john_waia/static/media/obamaImage.9b8298b8671d11146bbf.png",
     "static/media/talo-character.png": "/cv_john_waia/static/media/talo-character.0b52eecf8098ef044e32.png",
+    "static/media/CV_John WAIA_Emploi.pdf": "/cv_john_waia/static/media/CV_John WAIA_Emploi.78783e3367a66f6f73ff.pdf",
     "static/media/talo-falling.png": "/cv_john_waia/static/media/talo-falling.3b0df61979c9bd525325.png",
     "static/media/resultat_commande.PNG": "/cv_john_waia/static/media/resultat_commande.609ff4fa98ebdd843068.PNG",
     "static/media/commande_hist.PNG": "/cv_john_waia/static/media/commande_hist.b2d82c8c45d7adbf1728.PNG",
@@ -15,12 +16,12 @@
     "static/media/logoCellocal.jpg": "/cv_john_waia/static/media/logoCellocal.c1070f2c18a24433ea02.jpg",
     "static/media/Entree_commande.PNG": "/cv_john_waia/static/media/Entree_commande.9b82bbddb559c2795616.PNG",
     "index.html": "/cv_john_waia/index.html",
-    "main.7fdbfaed.css.map": "/cv_john_waia/static/css/main.7fdbfaed.css.map",
-    "main.45a25802.js.map": "/cv_john_waia/static/js/main.45a25802.js.map",
+    "main.a5cdb3a4.css.map": "/cv_john_waia/static/css/main.a5cdb3a4.css.map",
+    "main.dc6dac5a.js.map": "/cv_john_waia/static/js/main.dc6dac5a.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fdbfaed.css",
-    "static/js/main.45a25802.js"
+    "static/css/main.a5cdb3a4.css",
+    "static/js/main.dc6dac5a.js"
   ]
 }
