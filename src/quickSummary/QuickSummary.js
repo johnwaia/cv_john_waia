@@ -2,6 +2,9 @@ import React from 'react';
 import johnWaiaPhoto from '../assets/john_waia.jpeg';
 import './quickSummary.css';
 
+const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';
+const HERO_VIDEO_NIGHT = 'https://videos.pexels.com/video-files/35677222/15118998_1920_1080_60fps.mp4';
+
 const keySkills = [
   { name: 'JavaScript', icon: 'javascript/javascript-original.svg' },
   { name: 'React', icon: 'react/react-original.svg' },
@@ -34,13 +37,23 @@ const keyFormations = [
 
 const softSkillHighlights = ['Adaptabilité', 'Travail en équipe', 'Résolution de problèmes'];
 
-function QuickSummary({ onSwitchToFull }) {
+function QuickSummary({ onSwitchToFull, darkMode }) {
   const handleSwitchToFull = (sectionId) => {
     onSwitchToFull(sectionId);
   };
 
   return (
     <section className="cv-section section-quicksummary">
+      <video
+        key={darkMode ? 'night' : 'day'}
+        className="hero-video-bg"
+        src={darkMode ? HERO_VIDEO_NIGHT : HERO_VIDEO_DAY}
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+      />
       <div className="section-inner quick-summary">
         <div className="quick-summary-card">
           <div className="quick-summary-header">

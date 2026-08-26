@@ -77,7 +77,7 @@ function App() {
         </button>
       </div>
 
-      {quickMode && <QuickSummary onSwitchToFull={handleSwitchToFull} />}
+      {quickMode && <QuickSummary onSwitchToFull={handleSwitchToFull} darkMode={darkMode} />}
 
       <main style={quickMode ? { display: 'none' } : undefined}>
         <section id="accueil" className="cv-section section-accueil">

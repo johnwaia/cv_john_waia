@@ -1,8 +1,12 @@
 .section-quicksummary {
   background: linear-gradient(180deg, #eef6ff, #f7f9fc);
+  position: relative;
+  overflow: hidden;
 }
 
 .quick-summary {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
 }
