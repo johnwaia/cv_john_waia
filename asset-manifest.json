@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/cv_john_waia/static/css/main.5f135c3d.css",
-    "main.js": "/cv_john_waia/static/js/main.4f622d92.js",
+    "main.css": "/cv_john_waia/static/css/main.f72d616a.css",
+    "main.js": "/cv_john_waia/static/js/main.5b6254b5.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "static/media/obamaImage.png": "/cv_john_waia/static/media/obamaImage.9b8298b8671d11146bbf.png",
+    "static/media/talo-character.png": "/cv_john_waia/static/media/talo-character.0b52eecf8098ef044e32.png",
+    "static/media/talo-falling.png": "/cv_john_waia/static/media/talo-falling.3b0df61979c9bd525325.png",
     "static/media/resultat_commande.PNG": "/cv_john_waia/static/media/resultat_commande.609ff4fa98ebdd843068.PNG",
     "static/media/commande_hist.PNG": "/cv_john_waia/static/media/commande_hist.b2d82c8c45d7adbf1728.PNG",
     "static/media/Fenetre_PopUp_commande.PNG": "/cv_john_waia/static/media/Fenetre_PopUp_commande.91ed710cdfd3f126c931.PNG",
@@ -13,12 +15,12 @@
     "static/media/logoCellocal.jpg": "/cv_john_waia/static/media/logoCellocal.c1070f2c18a24433ea02.jpg",
     "static/media/Entree_commande.PNG": "/cv_john_waia/static/media/Entree_commande.9b82bbddb559c2795616.PNG",
     "index.html": "/cv_john_waia/index.html",
-    "main.5f135c3d.css.map": "/cv_john_waia/static/css/main.5f135c3d.css.map",
-    "main.4f622d92.js.map": "/cv_john_waia/static/js/main.4f622d92.js.map",
+    "main.f72d616a.css.map": "/cv_john_waia/static/css/main.f72d616a.css.map",
+    "main.5b6254b5.js.map": "/cv_john_waia/static/js/main.5b6254b5.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5f135c3d.css",
-    "static/js/main.4f622d92.js"
+    "static/css/main.f72d616a.css",
+    "static/js/main.5b6254b5.js"
   ]
 }
