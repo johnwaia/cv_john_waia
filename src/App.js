@@ -65,12 +65,14 @@ function App() {
           />
           <button
             type="button"
-            className="dark-mode-toggle"
+            role="switch"
+            aria-checked={darkMode}
+            className={`dark-mode-toggle${darkMode ? ' is-on' : ''}`}
             onClick={() => setDarkMode((v) => !v)}
             aria-label={darkMode ? 'Désactiver le mode nuit' : 'Activer le mode nuit'}
             title={darkMode ? 'Désactiver le mode nuit' : 'Activer le mode nuit'}
           >
-            {darkMode ? '☀️' : '🌙'}
+            <span className="dark-mode-toggle-thumb">{darkMode ? '🌙' : '☀️'}</span>
           </button>
           <div className="section-inner hero-section">
             <div className="hero-content-box">
