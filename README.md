@@ -3,11 +3,12 @@
 Mon CV en ligne interactif, développeur Full Stack Junior — construit avec React.
 Le site se présente comme un enchaînement de sections plein écran, chacune dédiée à une facette du profil : présentation, formation, expériences, compétences, soft skills, centres d'intérêt, projets, statistiques de visite et contact.
 
-🔗 **Démo en ligne :** [johnwaia.github.io/cv_john_waia](https://johnwaia.github.io/cv_john_waia)
+🔗 **lien vers le CV :** [johnwaia.github.io/cv_john_waia](https://johnwaia.github.io/cv_john_waia)
 
-<img src="src/assets/talo-falling.png" alt="Talo, la mascotte qui chute au scroll" align="right" width="220">
 
 ## Sommaire
+
+<img src="src/assets/talo-falling.png" alt="Talo, la mascotte qui chute au scroll" align="right" width="200">
 
 - [Aperçu](#aperçu)
 - [Fonctionnalités](#fonctionnalités)
