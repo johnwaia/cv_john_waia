@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cv_john_waia/static/css/main.894b77a0.css",
-    "main.js": "/cv_john_waia/static/js/main.e8f602f4.js",
+    "main.css": "/cv_john_waia/static/css/main.b3aec165.css",
+    "main.js": "/cv_john_waia/static/js/main.8d57c8dc.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "static/media/obamaImage.png": "/cv_john_waia/static/media/obamaImage.9b8298b8671d11146bbf.png",
     "static/media/talo-character.png": "/cv_john_waia/static/media/talo-character.0b52eecf8098ef044e32.png",
@@ -15,12 +15,12 @@
     "static/media/logoCellocal.jpg": "/cv_john_waia/static/media/logoCellocal.c1070f2c18a24433ea02.jpg",
     "static/media/Entree_commande.PNG": "/cv_john_waia/static/media/Entree_commande.9b82bbddb559c2795616.PNG",
     "index.html": "/cv_john_waia/index.html",
-    "main.894b77a0.css.map": "/cv_john_waia/static/css/main.894b77a0.css.map",
-    "main.e8f602f4.js.map": "/cv_john_waia/static/js/main.e8f602f4.js.map",
+    "main.b3aec165.css.map": "/cv_john_waia/static/css/main.b3aec165.css.map",
+    "main.8d57c8dc.js.map": "/cv_john_waia/static/js/main.8d57c8dc.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.894b77a0.css",
-    "static/js/main.e8f602f4.js"
+    "static/css/main.b3aec165.css",
+    "static/js/main.8d57c8dc.js"
   ]
 }
