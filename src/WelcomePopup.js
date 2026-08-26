@@ -1,6 +1,35 @@
 import React from 'react';
 
+function getGreeting() {
+  const hour = new Date().getHours();
+
+  if (hour >= 6 && hour < 12) {
+    return {
+      text: 'Bonjour',
+      gif: 'https://media.giphy.com/media/2WVlkIlX8btaQwlp8G/giphy.gif',
+    };
+  }
+  if (hour >= 12 && hour < 18) {
+    return {
+      text: 'Bon après-midi',
+      gif: 'https://media.giphy.com/media/a1uvjv5YZ3pQeVtTaS/giphy.gif',
+    };
+  }
+  if (hour >= 18) {
+    return {
+      text: 'Bonsoir',
+      gif: 'https://media.giphy.com/media/x4i6WhNWuErdQxw85w/giphy.gif',
+    };
+  }
+  return {
+    text: 'Bienvenue',
+    gif: 'https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif',
+  };
+}
+
 function WelcomePopup({ onClose }) {
+  const { text, gif } = getGreeting();
+
   return (
     <div style={{
       position: 'fixed',
@@ -22,15 +51,15 @@ function WelcomePopup({ onClose }) {
         boxShadow: '0 0 15px rgba(0,0,0,0.3)',
         boxSizing: 'border-box',
       }}>
-        <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Bienvenue sur mon CV !</h2>
-        <img 
-          src="https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif" 
-          alt="Bienvenue" 
-          style={{ 
-            width: '100%', 
-            maxWidth: '300px', 
+        <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{text} !</h2>
+        <img
+          src={gif}
+          alt={text}
+          style={{
+            width: '100%',
+            maxWidth: '300px',
             borderRadius: '2rem',
-            height: 'auto', 
+            height: 'auto',
             margin: '1rem auto',
             display: 'block',
           }}
