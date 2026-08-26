@@ -28,7 +28,7 @@ Mon CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'
 
 | Section | Contenu |
 |---|---|
-| 🏠 Accueil | Vidéo de fond (lagon, jour/nuit), carte de présentation translucide (effet verre dépoli), photo, présentation animée façon terminal de code, indicateur de scroll, switch mode nuit |
+| 🏠 Accueil | Vidéo de fond (lagon, jour/nuit), carte de présentation translucide (effet verre dépoli), photo, présentation animée façon terminal de code, indicateur de scroll, switch mode nuit, bouton de téléchargement du CV en PDF |
 | 🎓 Formation | Parcours scolaire (Licence Informatique, BTS Bâtiment, Bac STI2D…) par onglets |
 | 💼 Expériences | Historique professionnel filtrable par catégorie (Informatique, Restauration, Intérim, Bénévolat…), cartes retournables avec logo entreprise |
 | 🛠️ Compétences | Compétences techniques par domaine (Informatique / Bâtiment / Bureautique), classées par catégories (langages, frameworks, outils, déploiement, tests, méthodes agiles, réseaux…) |
@@ -37,14 +37,15 @@ Mon CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'
 | 🚀 Projets | Portfolio de projets (pédagogiques, personnels, autres) avec captures d'écran et onglets détaillés |
 | 📊 Statistiques de visite | Compteur de visiteurs en temps réel via une API dédiée |
 | 📬 Contact | Formulaire de contact (Formspree) + réseaux sociaux |
-| ⚡ Mode recruteur | Résumé condensé du CV (30s) : formation, expérience clé, compétences clés, soft skills, contact — avec un bouton "Voir plus" par bloc pour rejoindre directement la section complète correspondante |
+| ⚡ Mode recruteur | Résumé condensé du CV (30s) avec la même vidéo de fond (jour/nuit) que l'accueil : formation, expérience clé, compétences clés, soft skills, contact — avec un bouton "Voir plus" par bloc pour rejoindre directement la section complète correspondante, et un bouton de téléchargement du CV en PDF |
 
 ## Fonctionnalités
 
 - **Sections plein écran en défilement continu** : chaque section (`.cv-section`) occupe au moins un écran et s'enchaîne normalement dans le flux de la page (pas d'empilement `sticky`, pour un scroll fiable au trackpad et au tactile).
 - **Talo, la mascotte qui chute au scroll** : fixé sur le bord gauche de l'écran, ce petit personnage reste debout tant qu'on n'a pas atteint la section Formation, puis tombe (et tournoie) au fur et à mesure du scroll jusqu'à la section Contact. Pendant sa chute, on peut le saisir (glisser-déposer à la souris) et le déplacer librement dans la fenêtre. Respecte `prefers-reduced-motion`.
 - **Mode nuit** : switch (interrupteur à glissière) sur la section d'accueil qui change la vidéo de fond (jour/nuit) et applique un thème sombre à l'ensemble du site.
-- **Mode recruteur (résumé 30s)** : switch en haut de page qui affiche un résumé condensé du CV (`QuickSummary`) — formation, expérience clé, compétences clés, soft skills et contacts — avec un bouton "Voir plus" sur chaque bloc pour revenir au CV complet directement sur la section correspondante.
+- **Mode recruteur (résumé 30s)** : switch en haut de page qui affiche un résumé condensé du CV (`QuickSummary`) — formation, expérience clé, compétences clés, soft skills et contacts — avec un bouton "Voir plus" sur chaque bloc pour revenir au CV complet directement sur la section correspondante. Reprend la même vidéo de fond (jour/nuit) que la section d'accueil.
+- **Téléchargement du CV en PDF** : bouton présent sur la section d'accueil et dans le mode recruteur, qui télécharge directement `src/assets/CV_John WAIA_Emploi.pdf`.
 - **Message d'accueil dynamique** : la bulle de bienvenue affiche un texte et un GIF différents selon l'heure de la journée (matin, après-midi, soir).
 - **Animations au scroll** : apparition progressive des éléments via `IntersectionObserver` (`ScrollReveal`), effet "distribution de cartes" sur les onglets.
 - **Bio façon terminal** : la présentation est "tapée" caractère par caractère dans un faux terminal (`whoami`, `cat bio.txt`, `cat formation.txt`).
@@ -108,7 +109,7 @@ cv_john_waia/
 │   ├── quickSummary/
 │   │   ├── QuickSummary.js     # Mode recruteur : résumé condensé du CV (30s)
 │   │   └── quickSummary.css
-│   └── assets/                 # Images/logos utilisés dans le CV
+│   └── assets/                 # Images/logos utilisés dans le CV + CV_John WAIA_Emploi.pdf (téléchargement)
 ├── package.json
 └── README.md
 ```
@@ -172,7 +173,8 @@ Cette commande exécute `npm run build` (via `predeploy`) puis publie le contenu
 - **Compétences en colonnes** : la section Compétences utilise une mise en page CSS multi-colonnes (`columns`) pour que toutes les catégories tiennent sur un seul écran sans défilement interne.
 - **Vidéo de fond** : lecture en boucle, coupée (`muted`) et `playsInline` pour l'autoplay cross-navigateur ; le contenu textuel est regroupé dans une carte translucide (`backdrop-filter: blur`) pour rester lisible par-dessus la vidéo.
 - **Talo** : position calculée à chaque scroll (`FallingCharacter.js`) à partir de la progression entre le haut de la section `#formation` et le bas de la page ; le personnage est masqué avant ce point, affiché debout à l'arrivée sur Formation, puis bascule (crossfade) vers une illustration de chute avec un léger tournoiement au fil du scroll. Un glisser-déposer à la souris permet de le déplacer manuellement pendant la chute, sans interférer avec le pilotage par le scroll une fois relâché.
-- **Mode recruteur** : `quickMode` (état dans `App.js`) masque le `<main>` (sections complètes conservées dans le DOM, `display: none`) et affiche `QuickSummary`. Chaque bouton "Voir plus" appelle `onSwitchToFull(sectionId)`, qui repasse en mode complet puis, une fois le DOM réaffiché (via `requestAnimationFrame`), scrolle en douceur jusqu'à la section (`id`) correspondante.
+- **Mode recruteur** : `quickMode` (état dans `App.js`) masque le `<main>` (sections complètes conservées dans le DOM, `display: none`) et affiche `QuickSummary`. Chaque bouton "Voir plus" appelle `onSwitchToFull(sectionId)`, qui repasse en mode complet puis, une fois le DOM réaffiché (via `requestAnimationFrame`), scrolle en douceur jusqu'à la section (`id`) correspondante. `darkMode` est aussi transmis à `QuickSummary` pour y rejouer la même vidéo de fond jour/nuit que l'accueil.
+- **Téléchargement du CV** : `src/assets/CV_John WAIA_Emploi.pdf` est importé directement dans `App.js` et `QuickSummary.js` ; Create React App (webpack) l'expose comme une URL statique, consommée par un simple `<a href={cvPdf} download>`.
 
 ## Licence
 
