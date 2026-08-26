@@ -34,12 +34,9 @@ const keyFormations = [
 
 const softSkillHighlights = ['Adaptabilité', 'Travail en équipe', 'Résolution de problèmes'];
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
 function QuickSummary({ onSwitchToFull }) {
-  const handleSwitchToFull = () => {
-    onSwitchToFull();
-    scrollToTop();
+  const handleSwitchToFull = (sectionId) => {
+    onSwitchToFull(sectionId);
   };
 
   return (
@@ -52,15 +49,19 @@ function QuickSummary({ onSwitchToFull }) {
               <h1>John Waïa</h1>
               <p className="quick-summary-role">Développeur Full Stack Junior</p>
               <p className="quick-summary-pitch">
-                Étudiant en Mastère Dev Manager Full Stack (Efrei Paris), à la recherche d'une
-                alternance/stage en développement web. Profil polyvalent, motivé à apprendre.
+                Étudiant en Mastère Dev Manager Full Stack (Efrei Paris). Profil polyvalent, motivé à apprendre.
               </p>
             </div>
           </div>
 
           <div className="quick-summary-grid">
             <div className="quick-summary-block">
-              <h2>🎓 Formation</h2>
+              <div className="quick-summary-block-header">
+                <h2>🎓 Formation</h2>
+                <button type="button" className="quick-summary-more" onClick={() => handleSwitchToFull('formation')}>
+                  Voir plus →
+                </button>
+              </div>
               <ul>
                 {keyFormations.map((f) => (
                   <li key={f.title}>
@@ -72,7 +73,12 @@ function QuickSummary({ onSwitchToFull }) {
             </div>
 
             <div className="quick-summary-block">
-              <h2>💼 Expérience clé</h2>
+              <div className="quick-summary-block-header">
+                <h2>💼 Expérience clé</h2>
+                <button type="button" className="quick-summary-more" onClick={() => handleSwitchToFull('experiences')}>
+                  Voir plus →
+                </button>
+              </div>
               <ul>
                 {keyExperiences.map((exp) => (
                   <li key={exp.title}>
@@ -86,7 +92,12 @@ function QuickSummary({ onSwitchToFull }) {
           </div>
 
           <div className="quick-summary-block">
-            <h2>🛠️ Compétences clés</h2>
+            <div className="quick-summary-block-header">
+              <h2>🛠️ Compétences clés</h2>
+              <button type="button" className="quick-summary-more" onClick={() => handleSwitchToFull('competences')}>
+                Voir plus →
+              </button>
+            </div>
             <div className="quick-summary-skills">
               {keySkills.map((skill) => (
                 <div key={skill.name} className="quick-skill-chip" title={skill.name}>
@@ -101,7 +112,12 @@ function QuickSummary({ onSwitchToFull }) {
           </div>
 
           <div className="quick-summary-block">
-            <h2>🌟 Soft skills</h2>
+            <div className="quick-summary-block-header">
+              <h2>🌟 Soft skills</h2>
+              <button type="button" className="quick-summary-more" onClick={() => handleSwitchToFull('softskills')}>
+                Voir plus →
+              </button>
+            </div>
             <div className="quick-summary-tags">
               {softSkillHighlights.map((s) => (
                 <span key={s} className="quick-tag">{s}</span>
@@ -121,7 +137,7 @@ function QuickSummary({ onSwitchToFull }) {
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg" alt="Email" />
               </a>
             </div>
-            <button type="button" className="quick-summary-cta" onClick={handleSwitchToFull}>
+            <button type="button" className="quick-summary-cta" onClick={() => handleSwitchToFull()}>
               Voir le CV complet →
             </button>
           </div>

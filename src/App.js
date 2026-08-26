@@ -47,6 +47,19 @@ function App() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  const handleSwitchToFull = (sectionId) => {
+    setQuickMode(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (sectionId) {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          scrollToTop();
+        }
+      });
+    });
+  };
+
   return (
     <div className={`App${darkMode ? ' dark-mode' : ''}`}>
       {showWelcome && <WelcomePopup onClose={() => setShowWelcome(false)} />}
@@ -64,7 +77,7 @@ function App() {
         </button>
       </div>
 
-      {quickMode && <QuickSummary onSwitchToFull={() => setQuickMode(false)} />}
+      {quickMode && <QuickSummary onSwitchToFull={handleSwitchToFull} />}
 
       <main style={quickMode ? { display: 'none' } : undefined}>
         <section id="accueil" className="cv-section section-accueil">

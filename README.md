@@ -1,7 +1,7 @@
 # CV John Waïa
 
 Mon CV en ligne interactif, développeur Full Stack Junior — construit avec React.
-Le site se présente comme un enchaînement de sections plein écran, chacune dédiée à une facette du profil : présentation, formation, expériences, compétences, soft skills, centres d'intérêt, projets, statistiques de visite et contact.
+Le site se présente comme un enchaînement de sections plein écran, chacune dédiée à une facette du profil : présentation, formation, expériences, compétences, soft skills, centres d'intérêt, projets, statistiques de visite et contact. Un "mode recruteur" permet aussi d'afficher un résumé condensé du CV en 30 secondes.
 
 🔗 **lien vers le CV :** [johnwaia.github.io/cv_john_waia](https://johnwaia.github.io/cv_john_waia)
 
@@ -24,7 +24,7 @@ Le site se présente comme un enchaînement de sections plein écran, chacune d�
 
 ## Aperçu
 
-Mon CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'enchaînent dans un défilement classique et continu. Une bulle de bienvenue s'affiche à l'ouverture, un switch "mode nuit" permet de basculer le thème (et la vidéo de fond) de la section d'accueil, un bouton "retour en haut" apparaît après un certain scroll, et **Talo**, un petit personnage mascotte, dégringole le long de l'écran au fil du scroll à partir de la section Formation.
+Mon CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'enchaînent dans un défilement classique et continu. Une bulle de bienvenue s'affiche à l'ouverture (avec un message et un GIF différents selon l'heure de la journée), un switch "mode nuit" permet de basculer le thème (et la vidéo de fond) de la section d'accueil, un switch "mode recruteur" affiche un résumé condensé du CV, un bouton "retour en haut" apparaît après un certain scroll, et **Talo**, un petit personnage mascotte, dégringole le long de l'écran au fil du scroll à partir de la section Formation (et peut être attrapé et déplacé à la souris pendant sa chute).
 
 | Section | Contenu |
 |---|---|
@@ -37,12 +37,15 @@ Mon CV s'organise en une page unique (`/`) découpée en sections `100vh` qui s'
 | 🚀 Projets | Portfolio de projets (pédagogiques, personnels, autres) avec captures d'écran et onglets détaillés |
 | 📊 Statistiques de visite | Compteur de visiteurs en temps réel via une API dédiée |
 | 📬 Contact | Formulaire de contact (Formspree) + réseaux sociaux |
+| ⚡ Mode recruteur | Résumé condensé du CV (30s) : formation, expérience clé, compétences clés, soft skills, contact — avec un bouton "Voir plus" par bloc pour rejoindre directement la section complète correspondante |
 
 ## Fonctionnalités
 
 - **Sections plein écran en défilement continu** : chaque section (`.cv-section`) occupe au moins un écran et s'enchaîne normalement dans le flux de la page (pas d'empilement `sticky`, pour un scroll fiable au trackpad et au tactile).
-- **Talo, la mascotte qui chute au scroll** : fixé sur le bord gauche de l'écran, ce petit personnage reste debout tant qu'on n'a pas atteint la section Formation, puis tombe (et tournoie) au fur et à mesure du scroll jusqu'à la section Contact. Respecte `prefers-reduced-motion`.
+- **Talo, la mascotte qui chute au scroll** : fixé sur le bord gauche de l'écran, ce petit personnage reste debout tant qu'on n'a pas atteint la section Formation, puis tombe (et tournoie) au fur et à mesure du scroll jusqu'à la section Contact. Pendant sa chute, on peut le saisir (glisser-déposer à la souris) et le déplacer librement dans la fenêtre. Respecte `prefers-reduced-motion`.
 - **Mode nuit** : switch (interrupteur à glissière) sur la section d'accueil qui change la vidéo de fond (jour/nuit) et applique un thème sombre à l'ensemble du site.
+- **Mode recruteur (résumé 30s)** : switch en haut de page qui affiche un résumé condensé du CV (`QuickSummary`) — formation, expérience clé, compétences clés, soft skills et contacts — avec un bouton "Voir plus" sur chaque bloc pour revenir au CV complet directement sur la section correspondante.
+- **Message d'accueil dynamique** : la bulle de bienvenue affiche un texte et un GIF différents selon l'heure de la journée (matin, après-midi, soir).
 - **Animations au scroll** : apparition progressive des éléments via `IntersectionObserver` (`ScrollReveal`), effet "distribution de cartes" sur les onglets.
 - **Bio façon terminal** : la présentation est "tapée" caractère par caractère dans un faux terminal (`whoami`, `cat bio.txt`, `cat formation.txt`).
 - **Vidéo de fond** en boucle sur la section d'accueil, contenu regroupé dans une carte translucide (effet verre dépoli) pour rester lisible tout en laissant deviner la vidéo derrière.
@@ -102,6 +105,9 @@ cv_john_waia/
 │   │   └── projetTabs.js       # Onglets réutilisables pour le détail d'un projet
 │   ├── Stats/
 │   │   └── stats.js            # Compteur de visiteurs
+│   ├── quickSummary/
+│   │   ├── QuickSummary.js     # Mode recruteur : résumé condensé du CV (30s)
+│   │   └── quickSummary.css
 │   └── assets/                 # Images/logos utilisés dans le CV
 ├── package.json
 └── README.md
@@ -165,7 +171,8 @@ Cette commande exécute `npm run build` (via `predeploy`) puis publie le contenu
 - **Mode nuit** : `darkMode` (état dans `App.js`) bascule une classe `dark-mode` sur le conteneur racine et `dark-mode-body` sur `<body>`, change la vidéo de fond de la section d'accueil (`HERO_VIDEO_DAY` / `HERO_VIDEO_NIGHT`) et adapte les styles (`App.css`) sur l'ensemble du site.
 - **Compétences en colonnes** : la section Compétences utilise une mise en page CSS multi-colonnes (`columns`) pour que toutes les catégories tiennent sur un seul écran sans défilement interne.
 - **Vidéo de fond** : lecture en boucle, coupée (`muted`) et `playsInline` pour l'autoplay cross-navigateur ; le contenu textuel est regroupé dans une carte translucide (`backdrop-filter: blur`) pour rester lisible par-dessus la vidéo.
-- **Talo** : position calculée à chaque scroll (`FallingCharacter.js`) à partir de la progression entre le haut de la section `#formation` et le bas de la page ; le personnage est masqué avant ce point, affiché debout à l'arrivée sur Formation, puis bascule (crossfade) vers une illustration de chute avec un léger tournoiement au fil du scroll.
+- **Talo** : position calculée à chaque scroll (`FallingCharacter.js`) à partir de la progression entre le haut de la section `#formation` et le bas de la page ; le personnage est masqué avant ce point, affiché debout à l'arrivée sur Formation, puis bascule (crossfade) vers une illustration de chute avec un léger tournoiement au fil du scroll. Un glisser-déposer à la souris permet de le déplacer manuellement pendant la chute, sans interférer avec le pilotage par le scroll une fois relâché.
+- **Mode recruteur** : `quickMode` (état dans `App.js`) masque le `<main>` (sections complètes conservées dans le DOM, `display: none`) et affiche `QuickSummary`. Chaque bouton "Voir plus" appelle `onSwitchToFull(sectionId)`, qui repasse en mode complet puis, une fois le DOM réaffiché (via `requestAnimationFrame`), scrolle en douceur jusqu'à la section (`id`) correspondante.
 
 ## Licence
 
