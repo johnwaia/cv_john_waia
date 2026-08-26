@@ -5,6 +5,8 @@ Le site se présente comme un enchaînement de sections plein écran, chacune d�
 
 🔗 **Démo en ligne :** [johnwaia.github.io/cv_john_waia](https://johnwaia.github.io/cv_john_waia)
 
+<img src="src/assets/talo-falling.png" alt="Talo, la mascotte qui chute au scroll" align="right" width="220">
+
 ## Sommaire
 
 - [Aperçu](#aperçu)
