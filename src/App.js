@@ -12,6 +12,7 @@ import Stats from './Stats/stats';
 import Contact from './contact/Contact';
 import ScrollReveal from './scrollreveal/ScrollReveal';
 import FallingCharacter from './fallingCharacter/FallingCharacter';
+import QuickSummary from './quickSummary/QuickSummary';
 import './App.css';
 
 const HERO_VIDEO_DAY = 'https://videos.pexels.com/video-files/6003441/6003441-hd_1920_1080_25fps.mp4';
@@ -21,6 +22,7 @@ function App() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [quickMode, setQuickMode] = useState(false);
 
   const handleScroll = useCallback(() => {
     setShowTopBtn(window.scrollY > 500);
@@ -51,7 +53,20 @@ function App() {
 
       <FallingCharacter />
 
-      <main>
+      <div className="quick-mode-toggle-wrap">
+        <button
+          type="button"
+          className={`quick-mode-toggle${quickMode ? ' is-on' : ''}`}
+          onClick={() => setQuickMode((v) => !v)}
+          title={quickMode ? 'Repasser au CV complet' : 'Mode recruteur pressé : résumé du CV en 30 secondes'}
+        >
+          {quickMode ? '📄 CV complet' : '⚡ Mode recruteur (30s)'}
+        </button>
+      </div>
+
+      {quickMode && <QuickSummary onSwitchToFull={() => setQuickMode(false)} />}
+
+      <main style={quickMode ? { display: 'none' } : undefined}>
         <section id="accueil" className="cv-section section-accueil">
           <video
             key={darkMode ? 'night' : 'day'}
@@ -164,9 +179,11 @@ function App() {
         </section>
       </main>
 
-      <section id="contact" className="cv-section section-contact contact-section">
-        <Contact />
-      </section>
+      {!quickMode && (
+        <section id="contact" className="cv-section section-contact contact-section">
+          <Contact />
+        </section>
+      )}
 
       {showTopBtn && (
         <button
