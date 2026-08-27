@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/cv_john_waia/static/css/main.10a2c049.css",
-    "main.js": "/cv_john_waia/static/js/main.e190313c.js",
+    "main.css": "/cv_john_waia/static/css/main.a1a4a22e.css",
+    "main.js": "/cv_john_waia/static/js/main.464b8d84.js",
     "static/js/453.dc3cd385.chunk.js": "/cv_john_waia/static/js/453.dc3cd385.chunk.js",
     "static/media/obamaImage.png": "/cv_john_waia/static/media/obamaImage.9b8298b8671d11146bbf.png",
+    "static/media/talo_end.png": "/cv_john_waia/static/media/talo_end.4b2f9240d52f9010d009.png",
     "static/media/talo-character.png": "/cv_john_waia/static/media/talo-character.0b52eecf8098ef044e32.png",
     "static/media/CV_John WAIA_Emploi.pdf": "/cv_john_waia/static/media/CV_John WAIA_Emploi.78783e3367a66f6f73ff.pdf",
     "static/media/talo-falling.png": "/cv_john_waia/static/media/talo-falling.3b0df61979c9bd525325.png",
@@ -16,12 +17,12 @@
     "static/media/logoCellocal.jpg": "/cv_john_waia/static/media/logoCellocal.c1070f2c18a24433ea02.jpg",
     "static/media/Entree_commande.PNG": "/cv_john_waia/static/media/Entree_commande.9b82bbddb559c2795616.PNG",
     "index.html": "/cv_john_waia/index.html",
-    "main.10a2c049.css.map": "/cv_john_waia/static/css/main.10a2c049.css.map",
-    "main.e190313c.js.map": "/cv_john_waia/static/js/main.e190313c.js.map",
+    "main.a1a4a22e.css.map": "/cv_john_waia/static/css/main.a1a4a22e.css.map",
+    "main.464b8d84.js.map": "/cv_john_waia/static/js/main.464b8d84.js.map",
     "453.dc3cd385.chunk.js.map": "/cv_john_waia/static/js/453.dc3cd385.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.10a2c049.css",
-    "static/js/main.e190313c.js"
+    "static/css/main.a1a4a22e.css",
+    "static/js/main.464b8d84.js"
   ]
 }
