@@ -182,8 +182,8 @@ Projet personnel — tous droits réservés. Le code peut être consulté à tit
 
 ## Contact
 
+<img src="src/assets/talo_end.png" alt="Talo à la fin de sa chute" align="right" width="200">
+
 - **GitHub :** [@johnwaia](https://github.com/johnwaia)
 - **LinkedIn :** [john-waïa](https://www.linkedin.com/in/john-wa%C3%AFa-314251218/)
-
-<img src="src/assets/talo_end.png" alt="Talo à la fin de sa chute" width="200">
 
