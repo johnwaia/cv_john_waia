@@ -168,7 +168,6 @@ Cette commande exécute `npm run build` (via `predeploy`) puis publie le contenu
 
 ## Détails d'architecture
 
-- **Sections en flux normal** : chaque section (`.cv-section`) occupe au moins `100vh`/`100dvh` et s'enchaîne dans le flux de page classique. Un empilement `position: sticky` ("effet feuilles") a été essayé puis retiré : combiné à un scroll interne par section, il rendait le défilement continu (trackpad, tactile, certaines souris) imprévisible, avec des sauts vers la section suivante en plein milieu du contenu.
 - **Mode nuit** : `darkMode` (état dans `App.js`) bascule une classe `dark-mode` sur le conteneur racine et `dark-mode-body` sur `<body>`, change la vidéo de fond de la section d'accueil (`HERO_VIDEO_DAY` / `HERO_VIDEO_NIGHT`) et adapte les styles (`App.css`) sur l'ensemble du site.
 - **Compétences en colonnes** : la section Compétences utilise une mise en page CSS multi-colonnes (`columns`) pour que toutes les catégories tiennent sur un seul écran sans défilement interne.
 - **Vidéo de fond** : lecture en boucle, coupée (`muted`) et `playsInline` pour l'autoplay cross-navigateur ; le contenu textuel est regroupé dans une carte translucide (`backdrop-filter: blur`) pour rester lisible par-dessus la vidéo.
