@@ -3,7 +3,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import InteractiveTerminal from '../terminal/InteractiveTerminal';
 import './contact.css';
 
-const Contact = () => {
+const Contact = ({ darkMode, onToggleDarkMode }) => {
   const [state, handleSubmit] = useForm("xgvyyabv"); // Remplace "xgvyyabv" par ton propre ID Formspree
 
   return (
@@ -44,7 +44,7 @@ const Contact = () => {
 
           <div className="contact-terminal">
             <h4>Mode développeur 👨‍💻</h4>
-            <InteractiveTerminal />
+            <InteractiveTerminal darkMode={darkMode} onToggleDarkMode={onToggleDarkMode} />
           </div>
         </div>
 

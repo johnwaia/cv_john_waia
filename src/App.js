@@ -200,7 +200,7 @@ function App() {
 
       {!quickMode && (
         <section id="contact" className="cv-section section-contact contact-section">
-          <Contact />
+          <Contact darkMode={darkMode} onToggleDarkMode={() => setDarkMode((v) => !v)} />
         </section>
       )}
 

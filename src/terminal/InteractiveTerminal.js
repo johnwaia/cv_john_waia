@@ -10,6 +10,7 @@ const HELP_ITEMS = [
   { label: 'projects         mes projets' },
   { label: 'contact          mes coordonnées' },
   { label: 'download         télécharger mon CV (PDF)' },
+  { label: 'darkmode         activer/désactiver le mode nuit' },
   { label: 'clear            effacer le terminal' },
   { label: 'help             afficher cette aide' },
 ];
@@ -66,7 +67,7 @@ const DOWNLOAD_ITEMS = [
   { label: '📄 Télécharger mon CV (PDF)', href: cvPdf, download: 'CV_John_WAIA.pdf' },
 ];
 
-function InteractiveTerminal() {
+function InteractiveTerminal({ darkMode, onToggleDarkMode }) {
   const [history, setHistory] = useState([
     { type: 'output', content: 'Bienvenue 👋 Tape "help" pour voir les commandes disponibles.' },
   ]);
@@ -133,6 +134,26 @@ function InteractiveTerminal() {
       case 'download':
         printList(DOWNLOAD_ITEMS);
         break;
+
+      case 'darkmode':
+      case 'dark-mode':
+      case 'theme': {
+        if (!onToggleDarkMode) {
+          print(['darkmode: fonctionnalité indisponible.']);
+          break;
+        }
+        if (arg === 'on') {
+          if (!darkMode) onToggleDarkMode();
+          print(['🌙 Mode nuit activé.']);
+        } else if (arg === 'off') {
+          if (darkMode) onToggleDarkMode();
+          print(['☀️ Mode nuit désactivé.']);
+        } else {
+          onToggleDarkMode();
+          print([darkMode ? '☀️ Mode nuit désactivé.' : '🌙 Mode nuit activé.']);
+        }
+        break;
+      }
 
       case 'sudo':
         if (arg === 'hire-me') {
