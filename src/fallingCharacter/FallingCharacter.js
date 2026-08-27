@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import taloStanding from '../assets/talo-character.png';
 import taloFalling from '../assets/talo-falling.png';
+import taloEnd from '../assets/talo_end.png';
 import './FallingCharacter.css';
 
 // Talo, fixé à l'écran, "tombe" au fur et à mesure du scroll de la page,
@@ -13,6 +14,7 @@ export default function FallingCharacter() {
   const trackRef = useRef(null);
   const figureRef = useRef(null);
   const isFallingRef = useRef(false);
+  const isLandedRef = useRef(false);
   const isVisibleRef = useRef(false);
   const wobbleRef = useRef(0);
   const targetXRef = useRef(0);
@@ -54,12 +56,19 @@ export default function FallingCharacter() {
 
       const trackHeight = track.clientHeight - figure.offsetHeight;
       const fallEase = Math.pow(progress, 1.4); // accélère comme une chute
-      wobbleRef.current = Math.sin(progress * 14) * 12; // tournoiement léger pendant la chute
+      wobbleRef.current = progress >= 1 ? 0 : Math.sin(progress * 14) * 12; // tournoiement léger pendant la chute, stoppé à l'atterrissage
       const falling = progress > FALL_START;
 
       if (falling !== isFallingRef.current) {
         isFallingRef.current = falling;
         figure.classList.toggle('is-falling', falling);
+      }
+
+      // Une fois le bas de page atteint, Talo est "allongé" au sol.
+      const landed = progress >= 1;
+      if (landed !== isLandedRef.current) {
+        isLandedRef.current = landed;
+        figure.classList.toggle('is-landed', landed);
       }
 
       // Le scroll ne pilote la position verticale que si Talo n'est pas en
@@ -154,6 +163,7 @@ export default function FallingCharacter() {
       <div className="falling-character" ref={figureRef}>
         <img className="fc-figure fc-figure-standing" src={taloStanding} alt="" draggable={false} />
         <img className="fc-figure fc-figure-falling" src={taloFalling} alt="" draggable={false} />
+        <img className="fc-figure fc-figure-end" src={taloEnd} alt="" draggable={false} />
       </div>
     </div>
   );
