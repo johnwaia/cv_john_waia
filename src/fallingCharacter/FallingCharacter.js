@@ -31,6 +31,11 @@ export default function FallingCharacter() {
       return;
     }
 
+    // Talo n'apparaît que sur la version navigateur (desktop).
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      return;
+    }
+
     let ticking = false;
     let rafId = null;
     let isDragging = false;

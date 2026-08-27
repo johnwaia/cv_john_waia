@@ -80,24 +80,9 @@
   cursor: grabbing;
 }
 
+/* Talo n'apparaît que sur la version navigateur (desktop) : masqué sur mobile. */
 @media (max-width: 640px) {
-  .falling-character {
-    width: 68px;
-  }
-
-  .falling-character {
-    height: 140px;
-  }
-
-  .fc-figure-standing {
-    width: 42px;
-  }
-
-  .fc-figure-falling {
-    width: 80px;
-  }
-
-  .fc-figure-end {
-    width: 150px;
+  .falling-character-track {
+    display: none;
   }
 }
