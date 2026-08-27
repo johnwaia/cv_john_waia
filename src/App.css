@@ -23,11 +23,7 @@ main {
 }
 
 /* ---------- Sections ---------- */
-/* Chaque section s'enchaîne normalement dans le flux de la page (défilement
-   classique et continu). L'empilement "feuilles" en position: sticky a été
-   retiré : avec un défilement interne par section, tout scroll continu
-   (trackpad, tactile, et même certaines souris) pouvait faire "sauter" au
-   milieu d'une section vers la section suivante de façon imprévisible. */
+
 .cv-section {
   width: 100%;
   min-height: 100vh;
@@ -326,13 +322,6 @@ main {
 }
 
 /* ---------- Mode nuit ---------- */
-/* La quasi-totalité du contenu du site est stylée en dur (couleurs claires,
-   fonds blancs) directement dans les composants. Plutôt que de réécrire
-   chaque composant pour supporter un thème, on assombrit chaque section par
-   un filtre d'inversion des couleurs (fonds clairs -> sombres, texte sombre
-   -> clair), avec les images/vidéos/logos contre-inversés pour garder leurs
-   couleurs d'origine. Accueil (déjà géré via la vidéo de nuit dédiée) et
-   Contact (déjà en thème sombre en permanence) sont exclus. */
 .App.dark-mode .cv-section:not(.section-accueil):not(.section-contact) {
   filter: invert(1) hue-rotate(180deg);
   background: #f7f9fc;
