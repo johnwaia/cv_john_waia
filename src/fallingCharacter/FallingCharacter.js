@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import taloStanding from '../assets/talo-character.png';
 import taloFalling from '../assets/talo-falling.png';
 import taloEnd from '../assets/talo_end.png';
+import taloSave from '../assets/talo_save.png';
 import './FallingCharacter.css';
 
 // Talo, fixé à l'écran, "tombe" au fur et à mesure du scroll de la page,
@@ -9,6 +10,18 @@ import './FallingCharacter.css';
 // pendant le scroll).
 const FALL_START = 0.03;
 const HORIZONTAL_EASE = 0.08; // lissage du déplacement horizontal
+
+// Position du point "d'attrape" (là où était la pince) dans l'image
+// talo_save.png d'origine (927x1696), en fraction de la largeur/hauteur.
+const SAVE_GRAB_X_FRAC = 516 / 927;
+const SAVE_GRAB_Y_FRAC = 270 / 1696;
+// Doit correspondre à la largeur définie pour .fc-figure-save en CSS.
+const SAVE_IMG_WIDTH = 100;
+const SAVE_IMG_HEIGHT = (SAVE_IMG_WIDTH * 1696) / 927;
+// Décalage du point d'attrape par rapport au centre de l'image, pour que
+// ce soit lui (et non le centre de Talo) qui suive le curseur pendant le glisser.
+const SAVE_GRAB_DX = SAVE_GRAB_X_FRAC * SAVE_IMG_WIDTH - SAVE_IMG_WIDTH / 2;
+const SAVE_GRAB_DY = SAVE_GRAB_Y_FRAC * SAVE_IMG_HEIGHT - SAVE_IMG_HEIGHT / 2;
 
 export default function FallingCharacter() {
   const trackRef = useRef(null);
@@ -92,7 +105,9 @@ export default function FallingCharacter() {
 
     // Le plan de déplacement (track) couvre tout l'écran : on borne juste la
     // position pour que Talo ne sorte pas de la fenêtre visible.
-    const clampPosition = (clientX, clientY) => {
+    // offsetX/offsetY décalent le point suivi par la souris : par défaut le
+    // centre de Talo, ou son point d'attrape pendant le glisser (drag).
+    const clampPosition = (clientX, clientY, offsetX = 0, offsetY = 0) => {
       const trackRect = track.getBoundingClientRect();
       const halfW = figure.offsetWidth / 2;
       const halfH = figure.offsetHeight / 2;
@@ -103,8 +118,8 @@ export default function FallingCharacter() {
       const minY = -trackRect.top + margin;
       const maxY = trackRect.height - figure.offsetHeight - margin;
 
-      const x = Math.min(Math.max(clientX - trackRect.left - halfW, minX), maxX);
-      const y = Math.min(Math.max(clientY - trackRect.top - halfH, minY), maxY);
+      const x = Math.min(Math.max(clientX - trackRect.left - halfW - offsetX, minX), maxX);
+      const y = Math.min(Math.max(clientY - trackRect.top - halfH - offsetY, minY), maxY);
       return { x, y };
     };
 
@@ -114,7 +129,7 @@ export default function FallingCharacter() {
       if (!isFallingRef.current) return;
       isDragging = true;
       figure.classList.add('is-dragging');
-      const { x, y } = clampPosition(e.clientX, e.clientY);
+      const { x, y } = clampPosition(e.clientX, e.clientY, SAVE_GRAB_DX, SAVE_GRAB_DY);
       targetXRef.current = x;
       targetYRef.current = y;
       e.preventDefault();
@@ -122,7 +137,7 @@ export default function FallingCharacter() {
 
     const onWindowMouseMove = (e) => {
       if (!isDragging) return;
-      const { x, y } = clampPosition(e.clientX, e.clientY);
+      const { x, y } = clampPosition(e.clientX, e.clientY, SAVE_GRAB_DX, SAVE_GRAB_DY);
       targetXRef.current = x;
       targetYRef.current = y;
     };
@@ -168,6 +183,7 @@ export default function FallingCharacter() {
       <div className="falling-character" ref={figureRef}>
         <img className="fc-figure fc-figure-standing" src={taloStanding} alt="" draggable={false} />
         <img className="fc-figure fc-figure-falling" src={taloFalling} alt="" draggable={false} />
+        <img className="fc-figure fc-figure-save" src={taloSave} alt="" draggable={false} />
         <img className="fc-figure fc-figure-end" src={taloEnd} alt="" draggable={false} />
       </div>
     </div>

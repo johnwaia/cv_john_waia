@@ -55,6 +55,13 @@
   max-height: none;
 }
 
+/* Largeur à garder synchronisée avec SAVE_IMG_WIDTH dans FallingCharacter.js. */
+.fc-figure-save {
+  width: 100px;
+  max-width: none;
+  max-height: none;
+}
+
 .falling-character.is-falling .fc-figure-standing {
   opacity: 0;
 }
@@ -68,6 +75,15 @@
 }
 
 .falling-character.is-landed .fc-figure-end {
+  opacity: 1;
+}
+
+.falling-character.is-dragging .fc-figure-falling,
+.falling-character.is-dragging .fc-figure-end {
+  opacity: 0;
+}
+
+.falling-character.is-dragging .fc-figure-save {
   opacity: 1;
 }
 
